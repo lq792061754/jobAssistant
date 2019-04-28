@@ -6,6 +6,7 @@ public class ExerciseTopic {
     private String et_time;
     private String et_from;
     private String et_kind;
+    private Integer et_heat;
     public Integer getEt_id() {
         return et_id;
     }
@@ -35,6 +36,12 @@ public class ExerciseTopic {
     }
     public void setEt_kind(String et_kind) {
         this.et_kind = et_kind;
+    }
+    public Integer getEt_heat() {
+        return et_heat;
+    }
+    public void setEt_heat(Integer et_heat) {
+        this.et_heat = et_heat;
     }
 
 

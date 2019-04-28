@@ -3,7 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace命名空间，唯一特性 -->
-<mapper namespace="com.lq.job.mapper.AdminMapper">
+<mapper namespace="com.lq.job.dao.AdminMapper">
  <select id="findOneAdmin" parameterType="Admin" resultType="Admin">
   SELECT * FROM admin WHERE name=#{name} AND password=#{password}
  </select>

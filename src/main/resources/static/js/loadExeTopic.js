@@ -23,6 +23,7 @@
 					"<td>" + lts[i].et_time +  "</td>"+
 					"<td>" + lts[i].et_from +  "</td>"+
 					"<td>" + lts[i].et_kind +  "</td>"+
+					"<td>" + lts[i].et_heat +  "</td>"+
 					"<td><a href='/showExerciseIndex?et_id="+lts[i].et_id+"'>查看</a>|<a href='#' onclick='del("+lts[i].et_id+")'>删除</a></td>";
 					rowTr.innerHTML = child
 					$(".table_node").append(rowTr)//显示数据到页面

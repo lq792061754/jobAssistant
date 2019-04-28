@@ -1,4 +1,4 @@
-package com.lq.job.mapper;
+package com.lq.job.dao;
 
 import com.lq.job.domain.Admin;
 

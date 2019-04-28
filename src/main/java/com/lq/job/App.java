@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@MapperScan("com.lq.job.mapper")
+@MapperScan("com.lq.job.dao")
 public class App
 {
 	public static void main(String[] args) {

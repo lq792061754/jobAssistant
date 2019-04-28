@@ -3,10 +3,10 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace命名空间，唯一特性 -->
-<mapper namespace="com.lq.job.mapper.ExerciseTopicMapper">
+<mapper namespace="com.lq.job.dao.ExerciseTopicMapper">
  <insert id="insertExetopic" useGeneratedKeys="true" keyProperty="et_id" parameterType="ExerciseTopic">
-  INSERT INTO exercise_topic (et_name, et_time, et_from, et_kind) VALUES(#{et_name},
-   #{et_time}, #{et_from}, #{et_kind})
+  INSERT INTO exercise_topic (et_name, et_time, et_from, et_kind, et_heat) VALUES(#{et_name},
+   #{et_time}, #{et_from}, #{et_kind}, #{et_heat})
  </insert>
  <select id="showExeTopic" resultType="ExerciseTopic">
   SELECT * FROM exercise_topic ORDER BY et_id DESC

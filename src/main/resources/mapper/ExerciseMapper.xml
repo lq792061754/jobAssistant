@@ -3,7 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace命名空间，唯一特性 -->
-<mapper namespace="com.lq.job.mapper.ExerciseMapper">
+<mapper namespace="com.lq.job.dao.ExerciseMapper">
  <insert id="insertExercise" parameterType="Exercise">
   INSERT INTO write_exercise (exercise_name, exercise_answer, choice1, choice2, choice3, 
   choice4, et_id) VALUES(#{exercise_name}, #{exercise_answer},

@@ -3,8 +3,8 @@ package com.lq.job.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lq.job.dao.AdminMapper;
 import com.lq.job.domain.Admin;
-import com.lq.job.mapper.AdminMapper;
 @Service
 public class AdminServiceImpl implements AdminService {
     @Autowired

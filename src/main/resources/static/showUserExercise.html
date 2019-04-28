@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title>题库</title> 
+  <link rel="stylesheet" type="text/css" href="css/basic.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/inner.css" /> 
+  <link rel="stylesheet" href="css/style2.css">
+  <script type="text/javascript" src="js/jquery.min.js"></script> 
+ </head> 
+ <body> 
+  <header> 
+   <div class="header"> 
+    <div class="top"> 
+     <div class="top_con"> 
+      <div class="tel">
+       咨询热线：400 800 9385
+      </div> 
+      <div class="mail">
+       咨询邮箱：sales@123.cn
+      </div> 
+      <div class="clear"></div> 
+     </div> 
+    </div> 
+    <div class="head_bg"> 
+     <div class="head"> 
+      <div class="logo fl">
+       <h1><a href="index.html"><img alt="" src="images/images/logo.gif" width="151px" height="39px" /></a></h1>
+      </div> 
+      <div class="menu fr"> 
+       <nav> 
+        <ul> 
+         <li><a id="menu1" href="index.html">网站首页</a></li> 
+         <li><a id="menu2" href="about.html">关于我们</a></li>
+         <li><a id="menu3" href="cases.html">笔试练习</a></li> 
+         <li><a id="menu4" href="news.html">面试技巧</a></li> 
+         <li><a id="menu5" href="service.html">校园招聘</a></li> 
+         <li><a id="menu6" href="solutions.html">讨论交流</a></li> 
+         <li><a id="menu7" href="#">登录/注册</a></li> 
+        </ul> 
+        <div class="clear"></div> 
+       </nav> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </header>  
+  <script type="text/javascript">
+   document.getElementById("menu3").className="a1";
+   var root="";
+</script> 
+  <input type="hidden" name="class_id" id="class_id" value="0" /> 
+  <input type="hidden" name="keywords" id="keywords" value="" /> 
+  <div class="container"> 
+   <div class="case_banner"></div> 
+   <div class="content" style="margin-top: -25px;"> 
+    <div class="case">
+     <div class="clear"></div>
+<div id="container">
+    <div class="tag">
+        <ul><label style="font-size: 15px;font-weight:800">职业类别：</label>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">c++工程师</a></li>
+            <li><a href="###">c#工程师</a></li>
+            <li><a href="###">.Net工程师</a></li>
+            <li> <a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li> <a href="###">维护</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">开发</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+            <li><a href="###">Java工程师</a></li>
+        </ul>
+    </div>
+    <div class="list ticket">
+        <div class="new">
+            <ul>
+                <li><strong>热门企业:</strong></li>
+                <li>百度</li>
+                <li>阿里巴巴</li>
+                <li>腾讯</li>
+                <li>华为</li>
+                <li>小米</li>
+                <li>360</li>
+                <li style="margin-left: 425px;"><input type="text" placeholder="请输入关键字"/><button type="submit">查询</button></li>         
+            </ul>
+            <table>
+                <thead>
+                <tr>
+                    <th>题目名称</th>
+                    <th>日期</th>
+                    <th>热度</th>
+                    <th>题目编号</th>
+                    <th>类别</th>
+                    <th>题目来源</th>                   
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="table_node">
+                <tr class="tr_node">
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="7">
+<div class="apu_aboutAndContact_page">
+    <ul class="apu_aboutAndContact_page_ul" style="float: right; margin-right: 25px;margin-top: 0px;">
+        <li id="ad_page" class="apu_aboutAndContact_page_li" style="display:none"></li>
+        <span class="msg" style="margin-right: 20px;"></span>
+        <span class="apu_aboutAndContact_page_li">
+            <button onclick="prePage()" class="apu_aboutAndContact_page_btn prePage">上一页</button>
+        </span>
+        <span class="apu_aboutAndContact_page_li">
+            <input style="width: 30px; height: 13px" type="text" class="apu_aboutAndContact_page_input select_go">
+            <a onclick="goPage()" class="apu_aboutAndContact_page_go">GO</a>
+        </span>
+        <span class="apu_aboutAndContact_page_li">
+            <button onclick="nextPage()" class="apu_aboutAndContact_page_btn nextPage">下一页</button>
+        </span>
+    </ul>
+</div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+    </div> 
+   </div> 
+  </div> 
+
+  <footer> 
+   <div class="footer2" id="footer">
+    <a name="foot"></a> 
+    <div class="footer_con"> 
+     <div class="footer_dl"> 
+      <dl> 
+       <dt>
+        关于
+       </dt> 
+       <dd>
+        <a href="about.html">关于我们</a>
+       </dd> 
+       <dd>
+        <a href="service.html">服务项目</a>
+       </dd> 
+       <dd>
+        <a href="contact.html">联系我们</a>
+       </dd> 
+       <dd>
+        <a href="/contact/pay.html">付款方式</a>
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        经典案例
+       </dt> 
+       <dd>
+        <a href="/cases/list-3-1.html">企业网站</a>
+       </dd> 
+       <dd>
+        <a href="/cases/list-8-1.html">旅游网站</a>
+       </dd> 
+       <dd>
+        <a href="/cases/list-9-1.html">购物商城</a>
+       </dd> 
+       <dd>
+        <a href="/cases/list-10-1.html">外贸网站</a>
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        服务范围
+       </dt> 
+       <dd>
+        <a href="service.html">空间域名</a>
+       </dd> 
+       <dd>
+        <a href="service.html">网站策划</a>
+       </dd> 
+       <dd>
+        <a href="service.html">网站建设</a>
+       </dd> 
+       <dd>
+        <a href="service.html">手机网站</a>
+       </dd> 
+      </dl> 
+      <dl class="footer_dl2" style="width:340px;"> 
+       <dt>
+        联系我们
+       </dt> 
+       <dd>
+        <img src="images/images/xinlang.png" alt="网络官方微博" />
+        <a href="http://weibo.com/sadfsa" rel="noFollow" target="_blank">官方微博: http://weibo.com/sadfsa</a>
+       </dd> 
+       <dd>
+        <img src="images/images/mail.png" alt="网站建设咨询邮箱" />
+        <a href="mailto:sales@sadfsa.cn">咨询邮箱：sales@sadfsa.cn</a>
+       </dd> 
+       <dd>
+        <img src="images/images/tel.png" alt="网站建设咨询电话" />咨询热线：0755-safafa
+       </dd> 
+       <dd>
+        <img src="images/images/weixin.png" alt="网站建设" />微信：网站建设
+       </dd> 
+      </dl>
+      <div class="clear"></div> 
+     </div> 
+    </div> 
+   </div>  
+   <div class="bottom"> 
+    <div class="bottom_con">
+     @2013 版权所有 深圳网络科技有限公司 地址：深圳市罗湖区春风路桂都大厦 电话：0755-234235432 
+    </div> 
+   </div> 
+  </footer>
+  <script type="text/javascript" src="js/jquery.waterfall.min.js"></script>
+  <script type="text/javascript" src="js/showExercise.js"></script> 
+ </body>
+</html>

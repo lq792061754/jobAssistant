@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lq.job.dao.ExerciseMapper;
 import com.lq.job.domain.Exercise;
 import com.lq.job.domain.Exercisevo;
-import com.lq.job.mapper.ExerciseMapper;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService{

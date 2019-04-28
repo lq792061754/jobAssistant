@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,7 +36,8 @@ public class ExerciseUploadController {
         return "admin/uploadExercise";
     }
     @RequestMapping(value="uploadExercise")
-    public String uploadExe(@RequestParam("filename")MultipartFile file, ExerciseTopic et) throws Exception {
+    public String uploadExe(@RequestParam("filename")MultipartFile file, ExerciseTopic et, Model model) throws Exception {
+        et.setEt_heat(0);
         int t = ets.insertExetopic(et);
         int et_id = et.getEt_id();
         String fileName = file.getOriginalFilename();
@@ -93,6 +95,7 @@ public class ExerciseUploadController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        model.addAttribute("RESULT", "success");
         return "admin/uploadExercise";
     }
 

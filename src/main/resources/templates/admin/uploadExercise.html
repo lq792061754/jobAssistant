@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleleaf.org">
     <head>
         <meta charset="UTF-8">
 <title>添加试题</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
+    window.onload=function(){
+    if ($("#name").val() == "success")
+    alert("添加成功");
+    };
     //验证用户名和密码是否为空
     function upload() {
     var uploadFormObj = document.getElementById("exerciseForm");
@@ -23,10 +27,11 @@
 <body>
     <div id="pageAll">
         <div class="page ">
-            <!-- 会员注册页面样式 -->
+            <!-- 添加试题页面样式 -->
             <div class="banneradd bor">
                 <div class="baTopNo">
                     <span>试题添加</span>
+                    <input type="hidden" th:value="${RESULT}" id="name"/>
                 </div>
                 <div class="baBody">
                    <form id="exerciseForm" action="uploadExercise" method="post" enctype="multipart/form-data">
