@@ -1,6 +1,7 @@
 package com.lq.job.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,21 +24,30 @@ public class ExerciseManageController {
     private ExerciseTopicService ets;
     @Autowired
     private ExerciseService es;
-
+    //显示试题
     @RequestMapping(value="showExeTopic")
     @ResponseBody
     public PageInfo<ExerciseTopic> showExeTopic(@RequestParam(defaultValue="1")Integer page) {
-        PageHelper.startPage(page, 5);
+        PageHelper.startPage(page, 5);//分页
         PageInfo<ExerciseTopic> list = new PageInfo<>(ets.showExeTopic());
         return list;
     }
+    //后台显示试题内容
     @RequestMapping(value="showExercises")
     @ResponseBody
     public PageInfo<Exercisevo> showExercises(@RequestParam(defaultValue="1")Integer page, Integer id) {
-        PageHelper.startPage(page, 5);
+        PageHelper.startPage(page, 5);//分页
         PageInfo<Exercisevo> list = new PageInfo<>(es.showExercises(id));
         return list;
     }
+    //前台显示试题内容
+    @RequestMapping(value="showUserExercise")
+    @ResponseBody
+    public List<Exercisevo> showUserExercise(Integer id) {
+        List<Exercisevo> list = es.showExercises(id);
+        return list;
+    }
+    //删除试题
     @RequestMapping(value="deleteExeTopic")
     @ResponseBody
     public Map<String,Object> delExeTopic(Integer et_id) {
@@ -50,6 +60,7 @@ public class ExerciseManageController {
         }
         return resultMap;
     }
+    //删除试题内容
     @RequestMapping(value="deleteExercise")
     @ResponseBody
     public Map<String,Object> delExercise(Integer exercise_id) {//传参必须与ajax中的名字一样
@@ -62,10 +73,12 @@ public class ExerciseManageController {
         }
         return resultMap;
     }
+    //后台显示试题初始化
     @RequestMapping(value="showExeIndex")
     public String showExeTopicIndex() {
         return "admin/showExeTopic";
     }
+    //后台显示试题内容初始化
     @RequestMapping(value="showExerciseIndex")
     public String showExerciseIndex(Model model, Integer et_id) {
         model.addAttribute("et_id", et_id);

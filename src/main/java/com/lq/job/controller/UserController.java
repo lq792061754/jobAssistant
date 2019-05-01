@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,5 +43,14 @@ public class UserController {
 //            redirect:userlogin.html?msg=2
             return "登陆失败";
         }
+    }
+    @RequestMapping(value="userExercise")
+    public String showUserExercise() {
+        return "user/showUserExercise";
+    }
+    @RequestMapping(value="doExercise")
+    public String doExercise(Integer id, Model model) {
+        model.addAttribute("ID", id);
+        return "user/doExercise";
     }
 }

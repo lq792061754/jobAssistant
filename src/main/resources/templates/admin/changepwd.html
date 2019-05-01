@@ -47,6 +47,8 @@
 		<div class="page ">
 			<!-- 修改密码页面样式 -->
 			<div class="bacen">
+			<span th:if="${MESSAGE != null}" style="position: absolute;margin-top: -38px;margin-left: 170px;
+                 color: forestgreen;font-size: 18px;">[[${MESSAGE}]]</span>
 			<form id="changeForm" action="/changePwd" method="post">
 				<div class="bbD">管理员用户名：&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${session.Admin.name}"></span></div>
 				<div class="bbD">

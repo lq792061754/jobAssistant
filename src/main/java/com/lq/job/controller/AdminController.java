@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lq.job.domain.Admin;
@@ -33,15 +34,19 @@ public class AdminController {
         return "redirect:login.html";
     }
     @RequestMapping(value="changePwd")
-    public String changePwd(String newPassword) {
-        adminService.changeAdminPwd(newPassword);
+    public String changePwd(String newPassword, Model model) {
+        int i = adminService.changeAdminPwd(newPassword);
+        if (i > 0)
+        model.addAttribute("MESSAGE", "修改成功！");
+        else
+            model.addAttribute("MESSAGE", "修改失败！");
         return "admin/changepwd";
     }
     @RequestMapping(value="changePwdIndex")
     public String changePwdIndex() {
         return "admin/changepwd";
     }
-    @RequestMapping(value="/")
+    @RequestMapping(value="/admin")
     public String startPage() {
         return "redirect:login.html";
     }
