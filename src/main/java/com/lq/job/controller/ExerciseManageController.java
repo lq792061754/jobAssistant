@@ -45,6 +45,8 @@ public class ExerciseManageController {
     @ResponseBody
     public List<Exercisevo> showUserExercise(Integer id) {
         List<Exercisevo> list = es.showExercises(id);
+        for (int i = 0; i < list.size(); i++)
+            list.get(i).setExercise_answer(null);//清空正确答案
         return list;
     }
     //删除试题
