@@ -46,6 +46,10 @@ public class AdminController {
     public String changePwdIndex() {
         return "admin/changepwd";
     }
+    @RequestMapping(value="/")
+    public String indexPage() {
+        return "redirect:index.html";
+    }
     @RequestMapping(value="/admin")
     public String startPage() {
         return "redirect:login.html";

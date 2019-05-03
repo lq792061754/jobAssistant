@@ -4,7 +4,6 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>在线答题</title>
-
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <link href="css/iconfont.css" rel="stylesheet" type="text/css" />
 <link href="css/test.css" rel="stylesheet" type="text/css" />
@@ -14,7 +13,6 @@
 	color:#fff;
 }
 </style>
-
 </head>
 <body>
 <input type="hidden" th:value="${ID}" id="id">
@@ -22,13 +20,12 @@
 	<!--nr start-->
 	<div class="test_main">
 		<div class="nr_left">
-			<div class="test">
-				<form action="" method="post">
+			<div class="test">				
 					<div class="test_title">
 						<p class="test_time">
 							<i class="icon iconfont">&#xe6fb;</i><b class="alt-1">00:01</b>
 						</p>
-						<font><input type="button" name="test_jiaojuan" value="交卷"></font>
+						<font><input type="button" onclick="submitCheck()" name="test_jiaojuan" value="交卷"></font>
 					</div>
 					
 						<div class="test_content">
@@ -43,7 +40,6 @@
 							<ul id="exe_body">		
 							</ul>
 						</div>
-				</form>
 			</div>
 
 		</div>
