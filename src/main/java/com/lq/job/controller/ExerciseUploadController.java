@@ -31,10 +31,6 @@ public class ExerciseUploadController {
     private ExerciseTopicService ets;
     @Autowired
     private ExerciseService exeService;
-    @RequestMapping(value="/uploadIndex")
-    public String uploadPage() {
-        return "admin/uploadExercise";
-    }
     @RequestMapping(value="uploadExercise")
     public String uploadExe(@RequestParam("filename")MultipartFile file, ExerciseTopic et, Model model) throws Exception {
         et.setEt_heat(0);

@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -75,16 +74,19 @@ public class ExerciseManageController {
         }
         return resultMap;
     }
-    //后台显示试题初始化
-    @RequestMapping(value="showExeIndex")
-    public String showExeTopicIndex() {
-        return "admin/showExeTopic";
+    @RequestMapping(value="checkAnswer")
+    @ResponseBody
+    public String checkAnswer(@RequestParam("list")List<String> answer) {
+        int id = Integer.parseInt(answer.get(0));
+        ets.addHeat(id);
+        List<Exercisevo> list = es.showExercises(id);
+        int j = 0, sum = 0;
+        for (int i = 1; i < answer.size(); i++) {
+            if (list.get(j).getExercise_answer().equals(answer.get(i))) {
+                sum++;
+                j++;
+            }
+        }
+        return "123";
     }
-    //后台显示试题内容初始化
-    @RequestMapping(value="showExerciseIndex")
-    public String showExerciseIndex(Model model, Integer et_id) {
-        model.addAttribute("et_id", et_id);
-        return "admin/showExercise";
-    }
-
 }

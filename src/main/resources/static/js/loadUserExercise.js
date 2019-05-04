@@ -1,6 +1,7 @@
         var length;
+        var id
         $(document).ready(function(){//初始化	加载
-		var id = $("#id").val();
+		id = $("#id").val();
 		 $.ajax({
 		     type: 'GET',
 		     url: "/showUserExercise",
@@ -20,25 +21,25 @@
 				"<ul>" +
 				"<li class='option'>" +
 				"<input type='radio' value='"+lts[j].choice1+"' class='radioOrCheck' name='answer"+(j+1)+"' id='0_answer_"+(j+1)+"_option_1'/>" +
-				"<label for='0_answer_"+(j+1)+"_option_1'>" +
+				"<label id='choice' for='0_answer_"+(j+1)+"_option_1'>" +
 				"A.<p class='ue' style='display: inline;'>"+lts[j].choice1+"</p>" +
 				"</label>" +
 				"</li>" +
 				"<li class='option'>" +
 				"<input type='radio' value='"+lts[j].choice2+"' class='radioOrCheck' name='answer"+(j+1)+"' id='0_answer_"+(j+1)+"_option_2'/>" +
-				"<label for='0_answer_"+(j+1)+"_option_2'>" +
+				"<label id='choice' for='0_answer_"+(j+1)+"_option_2'>" +
 				"B.<p class='ue' style='display: inline;'>"+lts[j].choice2+"</p>" +
 				"</label>" +
 				"</li>" +
 				"<li class='option'>" +
 				"<input type='radio' value='"+lts[j].choice3+"' class='radioOrCheck' name='answer"+(j+1)+"' id='0_answer_"+(j+1)+"_option_3'/>" +
-				"<label for='0_answer_"+(j+1)+"_option_3'>" +
+				"<label id='choice' for='0_answer_"+(j+1)+"_option_3'>" +
 				"C.<p class='ue' style='display: inline;'>"+lts[j].choice3+"</p>" +
 				"</label>" +
 				"</li>"+
 				"<li class='option'>" +
 				"<input type='radio' value='"+lts[j].choice4+"' class='radioOrCheck' name='answer"+(j+1)+"' id='0_answer_"+(j+1)+"_option_4'/>" +
-				"<label for='0_answer_"+(j+1)+"_option_4'>" +
+				"<label id='choice' for='0_answer_"+(j+1)+"_option_4'>" +
 				"D.<p class='ue' style='display: inline;'>"+lts[j].choice4+"</p>" +
 				"</label>" +
 				"</li>" +
@@ -60,31 +61,28 @@
 	});
     function submitCheck() {
     	var undo = 0;
-        var _list = {};
-        for (var i = 0; i < length; i++) {
-        	var radioName = "answer"+(i+1);
+        var _list = [];
+        _list[0] = id;//将id存入数组
+        for (var i = 1; i <= length; i++) {
+        	var radioName = "answer"+ i;
         	var val=$('input:radio[name='+ radioName +']:checked').val();
-        	if (val != null)
-            _list["answer[" + i + "]"] = val; //设置对象的key=>value键值对，即类似于a[0]=0的内容塞入对象_list中，对于后台接收来说，就相当于List内容了
-        	else {
-        		_list["answer[" + i + "]"] = null;
+        	if (val == null) {
         		undo++;
-        	}		
+        	}
+        _list[i] = val;
         }
-        if(confirm('还有'+undo+'道题没做,确定要提交吗？')) 
-        { 
-          alert("不行");
-          return;
-        } 
-        alert("继续");
-       /* $.ajax({  
-            url: '传递的路径',  
-            data: _list,  //直接传_list节可以了，相当于  data: { "ids[0]":1,"ids[1]":2 }这种写法
-            dataType: "json",  
-            type: "POST",  
-            success: function (data) {  
-                alert('Ok');  
-            }  
-        });  */
+        if(confirm('还有'+undo+'道题没做,确定要提交吗？')) {
+        $(".alt-1").empty();
+        $("#test_jiaojuan").hide();
+        $(".radioOrCheck").attr("disabled", true);
+          $.ajax({  
+              url: "/checkAnswer",
+              data: "list="+_list,
+              dataType: "json",
+              type: "POST",
+              success: function (data) {
+                  alert("123456");//后台返回的json数据是一个纯String类型的对象时，前端dataType属性设置为json后，会认为这个由String对象转换的json数据格式不是标准的json格式
+              }  
+          });
+        }
     }
-	

@@ -30,4 +30,10 @@ public class ExerciseTopicServiceImpl implements ExerciseTopicService {
         return etm.deleteExetopicById(id);
     }
 
+    @Override
+    public Integer addHeat(Integer id) {
+        // TODO Auto-generated method stub
+        return etm.addHeat(id);
+    }
+
 }

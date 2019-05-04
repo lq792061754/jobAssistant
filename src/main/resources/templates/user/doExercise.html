@@ -9,80 +9,79 @@
 <link href="css/test.css" rel="stylesheet" type="text/css" />
 <style>
 .hasBeenAnswer {
-	background: #5d9cec;
-	color:#fff;
+    background: #5d9cec;
+    color:#fff;
 }
 </style>
 </head>
 <body>
 <input type="hidden" th:value="${ID}" id="id">
 <div class="main">
-	<!--nr start-->
-	<div class="test_main">
-		<div class="nr_left">
-			<div class="test">				
-					<div class="test_title">
-						<p class="test_time">
-							<i class="icon iconfont">&#xe6fb;</i><b class="alt-1">00:01</b>
-						</p>
-						<font><input type="button" onclick="submitCheck()" name="test_jiaojuan" value="交卷"></font>
-					</div>
-					
-						<div class="test_content">
-							<div class="test_content_title">
-								<h2>单选题</h2>
-								<p id="exe_head">
-									
-								</p>
-							</div>
-						</div>
-						<div class="test_content_nr">
-							<ul id="exe_body">		
-							</ul>
-						</div>
-			</div>
+    <!--nr start-->
+    <div class="test_main">
+        <div class="nr_left">
+            <div class="test">              
+                    <div class="test_title">
+                        <p class="test_time">
+                            <i class="icon iconfont">&#xe6fb;</i><b class="alt-1">00:01</b>
+                        </p>
+                        <font><input type="button" onclick="submitCheck()" id="test_jiaojuan" value="交卷"></font>
+                    </div>
+                    
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>单选题</h2>
+                                <p id="exe_head">
+                                    
+                                </p>
+                            </div>
+                        </div>
+                        <div class="test_content_nr">
+                            <ul id="exe_body">      
+                            </ul>
+                        </div>
+            </div>
 
-		</div>
-		<div class="nr_right">
-			<div class="nr_rt_main">
-				<div class="rt_nr1">
-					<div class="rt_nr1_title">
-						<h1>
-							<i class="icon iconfont">&#xe692;</i>答题卡
-						</h1>
-						<p class="test_time">
-							<i class="icon iconfont">&#xe6fb;</i><b class="alt-1">00:01</b>
-						</p>
-					</div>
-					
-						<div class="rt_content">
-							<div class="rt_content_tt">
-								<h2>单选题</h2>
-							</div>
-							<div class="rt_content_nr answerSheet">
-								<ul id="exe_foot">
-								</ul>
-							</div>
-						</div>
-					
-						<div class="rt_content">
-							<div class="rt_content_tt">
-								<h2></h2>
-								<p>
-									<span></span><i class="content_lit"></i><span></span>
-								</p>
-							</div>
-							<div class="rt_content_nr answerSheet">
-							</div>
-						</div>
-					
-				</div>
+        </div>
+        <div class="nr_right">
+            <div class="nr_rt_main">
+                <div class="rt_nr1">
+                    <div class="rt_nr1_title">
+                        <h1>
+                            <i class="icon iconfont">&#xe692;</i>答题卡
+                        </h1>
+                        <p class="test_time">
+                            <i class="icon iconfont">&#xe6fb;</i><b class="alt-1">00:01</b>
+                        </p>
+                    </div>
+                    
+                        <div class="rt_content">
+                            <div class="rt_content_tt">
+                                <h2>单选题</h2>
+                            </div>
+                            <div class="rt_content_nr answerSheet">
+                                <ul id="exe_foot">
+                                </ul>
+                            </div>
+                        </div>
+                    
+                        <div class="rt_content">
+                            <div class="rt_content_tt">
+                                <p style="margin-left: 10px;">
+                                    <span><a href="/userExercise">退&nbsp;&nbsp;出</a></span>
+                                </p>
+                            </div>
+                            <div class="rt_content_nr answerSheet">
+                            </div>
+                        </div>
+                    
+                </div>
 
-			</div>
-		</div>
-	</div>
-	<!--nr end-->
-	<div class="foot"></div>
+            </div>
+        </div>
+    </div>
+    <!--nr end-->
+    <div class="foot"></div>
 </div>
 
 <script src="js/jquery-1.11.3.min.js"></script>
@@ -90,34 +89,34 @@
 <!--时间js-->
 <script src="js/jquery.countdown.js"></script>
 <script>
-	window.jQuery(function($) {
-		"use strict";
-		
-		$('time').countDown({
-			with_separators : false
-		});
-		$('.alt-1').countDown({
-			css_class : 'countdown-alt-1'
-		});
-		$('.alt-2').countDown({
-			css_class : 'countdown-alt-2'
-		});
-		
-	});
-	
-	
-	$(function() {
-		$('#exe_body').on('click', '.option', function() {//动态添加元素的click事件
-		debugger;
-			var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
-			var cardLi = $('a[href=#' + examId + ']'); // 根据题目ID找到对应答题卡
-			// 设置已答题
-			if(!cardLi.hasClass('hasBeenAnswer')){
-				cardLi.addClass('hasBeenAnswer');
-			}
-			
-		});
-	});
+    window.jQuery(function($) {
+        "use strict";
+        
+        $('time').countDown({
+            with_separators : false
+        });
+        $('.alt-1').countDown({
+            css_class : 'countdown-alt-1'
+        });
+        $('.alt-2').countDown({
+            css_class : 'countdown-alt-2'
+        });
+        
+    });
+    
+    
+    $(function() {
+        $('#exe_body').on('click', '.option', function() {//动态添加元素的click事件
+        debugger;
+            var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
+            var cardLi = $('a[href=#' + examId + ']'); // 根据题目ID找到对应答题卡
+            // 设置已答题
+            if(!cardLi.hasClass('hasBeenAnswer')){
+                cardLi.addClass('hasBeenAnswer');
+            }
+            
+        });
+    });
 </script>
 <script src="js/loadUserExercise.js"></script>
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">

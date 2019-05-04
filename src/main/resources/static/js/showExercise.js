@@ -25,7 +25,7 @@
 					"<td>" + lts[i].et_id +  "</td>"+
 					"<td>" + lts[i].et_kind +  "</td>"+
 					"<td>" + lts[i].et_from +  "</td>"+
-					"<td><button class='start-button''><a href='/doExercise?id="+lts[i].et_id+"'>开始测试</a></button></td>";
+					"<td><button class='start-button' onclick='doExe("+lts[i].et_id+")'>开始测试</button></td>";
 					rowTr.innerHTML = child
 					$(".table_node").append(rowTr)//显示数据到页面
 				}
@@ -62,4 +62,7 @@
 		    $(".select_go").val("");//清空数据
 	    }
 		console.log(last);//打印
+	}
+	function doExe(id) {
+		window.location.href='/doExercise?id='+id+'';
 	}

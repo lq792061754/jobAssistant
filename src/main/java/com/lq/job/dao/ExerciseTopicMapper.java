@@ -8,5 +8,5 @@ public interface ExerciseTopicMapper {
     public int insertExetopic(ExerciseTopic exerciseTopic);
     public List<ExerciseTopic> showExeTopic();
     public int deleteExetopicById(Integer id);
-
+    public Integer addHeat(Integer id);
 }
