@@ -9,4 +9,5 @@ public interface ExerciseService {
     public Integer insertExercise(Exercise exercise);
     public List<Exercisevo> showExercises(Integer id);
     public Integer deleteExeById(Integer id);
+    public Integer deleteAllByEt_id(Integer id);
 }

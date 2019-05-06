@@ -53,8 +53,9 @@ public class ExerciseManageController {
     @ResponseBody
     public Map<String,Object> delExeTopic(Integer et_id) {
         int i = ets.deleteExetopicById(et_id);
+        int j = es.deleteAllByEt_id(et_id);
         Map<String,Object> resultMap = new HashMap<String, Object>();
-        if (i==1) {
+        if (i > 0 && j >= 0) {
             resultMap.put("type", "success");
         }else{
             resultMap.put("type", "fail");
@@ -76,17 +77,22 @@ public class ExerciseManageController {
     }
     @RequestMapping(value="checkAnswer")
     @ResponseBody
-    public String checkAnswer(@RequestParam("list")List<String> answer) {
-        int id = Integer.parseInt(answer.get(0));
+    public Map<String, Object> checkAnswer(Integer id) {
         ets.addHeat(id);
         List<Exercisevo> list = es.showExercises(id);
-        int j = 0, sum = 0;
-        for (int i = 1; i < answer.size(); i++) {
-            if (list.get(j).getExercise_answer().equals(answer.get(i))) {
-                sum++;
-                j++;
-            }
+        Map<String, Object> answerMap = new HashMap<String, Object>();
+        for(int i = 0; i < list.size(); i++) {
+            String s = "no answer";
+            if (list.get(i).getChoice1().equals(list.get(i).getExercise_answer()))
+                s = "A";
+            if (list.get(i).getChoice2().equals(list.get(i).getExercise_answer()))
+                s = "B";
+            if (list.get(i).getChoice3().equals(list.get(i).getExercise_answer()))
+                s = "C";
+            if (list.get(i).getChoice4().equals(list.get(i).getExercise_answer()))
+                s = "D";
+            answerMap.put("answer"+i, s);
         }
-        return "123";
+        return answerMap;
     }
 }

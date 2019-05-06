@@ -23,7 +23,7 @@
             <div class="test">              
                     <div class="test_title">
                         <p class="test_time">
-                            <i class="icon iconfont">&#xe6fb;</i><b class="alt-1">00:01</b>
+                            <i class="icon iconfont">&#xe6fb;</i><b id="time" class="alt-1">00:01</b>
                         </p>
                         <font><input type="button" onclick="submitCheck()" id="test_jiaojuan" value="交卷"></font>
                     </div>
@@ -32,12 +32,12 @@
                             <div class="test_content_title">
                                 <h2>单选题</h2>
                                 <p id="exe_head">
-                                    
                                 </p>
+                                <span id='score' style="margin-left: 400px; font-size: 18px; color: coral;"></span>
                             </div>
                         </div>
                         <div class="test_content_nr">
-                            <ul id="exe_body">      
+                            <ul id="exe_body">
                             </ul>
                         </div>
             </div>
@@ -90,8 +90,7 @@
 <script src="js/jquery.countdown.js"></script>
 <script>
     window.jQuery(function($) {
-        "use strict";
-        
+        "use strict"; 
         $('time').countDown({
             with_separators : false
         });

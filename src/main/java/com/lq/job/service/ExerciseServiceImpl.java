@@ -31,4 +31,10 @@ public class ExerciseServiceImpl implements ExerciseService{
         return exeMapper.deleteExeById(id);
     }
 
+    @Override
+    public Integer deleteAllByEt_id(Integer id) {
+        // TODO Auto-generated method stub
+        return exeMapper.deleteAllByEt_id(id);
+    }
+
 }

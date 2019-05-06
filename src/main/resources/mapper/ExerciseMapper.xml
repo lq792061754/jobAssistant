@@ -18,4 +18,7 @@
  <delete id="deleteExeById" parameterType="Integer">
   DELETE FROM write_exercise WHERE exercise_id = #{exercise_id}
  </delete>
+ <delete id="deleteAllByEt_id" parameterType="Integer">
+  DELETE FROM write_exercise WHERE et_id = #{et_id}
+ </delete>
 </mapper>
