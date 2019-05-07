@@ -5,7 +5,7 @@ public class User {
     private String userName;
     private String password;
     private String email;
-    private String createTime;
+    private String createTime;//要与数据库一样！
     public Integer getId() {
         return id;
     }

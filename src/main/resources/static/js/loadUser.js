@@ -3,11 +3,10 @@
 		loadPage(num);//默认
 	});
 	function loadPage(num) {
-	var id = $("#id").val();
      $.ajax({
          type: 'GET',
-         url: "/showExercises",
-		 data: {"page": num, "id" : id}, //传输的数据
+         url: "/showAllUser",
+		 data: {"page": num}, //传输的数据
          contentType: "application/json;cherset=utf-8",
          dataType: "json",
          success: function (data){
@@ -19,15 +18,12 @@
 					var rowTr = document.createElement('tr')
 			          //找到html的tr节点
 			           rowTr.className = "tr_node"
-			        var child = "<td>" + lts[i].exercise_id +  "</td>"+
-					"<td>" + lts[i].exercise_name +  "</td>"+
-					"<td>" + lts[i].exercise_answer +  "</td>"+
-					/*"<td>" + lts[i].choice1 +  "</td>"+
-					"<td>" + lts[i].choice2 +  "</td>"+
-					"<td>" + lts[i].choice3 +  "</td>"+
-					"<td>" + lts[i].choice4 +  "</td>"+*/
-					"<td>" + lts[i].et_name +  "</td>"+
-					"<td style='width:10%'><a href='#' onclick='showDetail()'>修改</a>|<a href='#' onclick='del("+lts[i].exercise_id+")'>删除</a></td>";
+			        var child = "<td>" + lts[i].id +  "</td>"+
+					"<td>" + lts[i].userName +  "</td>"+
+					"<td>" + lts[i].password +  "</td>"+
+					"<td>" + lts[i].email +  "</td>"+
+					"<td>" + lts[i].createTime +  "</td>"+
+					"<td style='width:10%'><a href='#' onclick='del("+lts[i].id+")'>删除</a></td>";
 					rowTr.innerHTML = child
 					$(".table_node").append(rowTr)//显示数据到页面
 				}

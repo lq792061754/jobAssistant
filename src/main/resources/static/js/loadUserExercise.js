@@ -4,7 +4,7 @@
         var flag = true;
         var myArray=new Array();
         $(document).ready(function(){//初始化	加载
-        jump(10);
+        jump(60*60);
 		id = $("#id").val();
 		 $.ajax({
 		     type: 'GET',
