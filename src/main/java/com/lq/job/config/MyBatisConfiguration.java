@@ -1,4 +1,4 @@
-package com.lq.job.util;
+package com.lq.job.config;
 
 import java.util.Properties;
 

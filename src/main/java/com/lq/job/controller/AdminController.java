@@ -42,32 +42,4 @@ public class AdminController {
             model.addAttribute("MESSAGE", "修改失败！");
         return "admin/changepwd";
     }
-    @RequestMapping(value="changePwdIndex")
-    public String changePwdIndex() {
-        return "admin/changepwd";
-    }
-    @RequestMapping(value="/")
-    public String indexPage() {
-        return "redirect:index.html";
-    }
-    @RequestMapping(value="/admin")
-    public String startPage() {
-        return "redirect:login.html";
-    }
-    @RequestMapping(value="home")
-    public String mainPage() {
-        return "admin/right";
-    }
-    @RequestMapping(value="top")
-    public String topPage() {
-        return "admin/admin_top";
-    }
-    @RequestMapping(value="left")
-    public String leftPage() {
-        return "admin/admin_left";
-    }
-    @RequestMapping(value="right")
-    public String rightPage() {
-        return "admin/right";
-    }
 }

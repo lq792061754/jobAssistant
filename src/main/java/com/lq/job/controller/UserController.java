@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,17 +39,23 @@ public class UserController {
         }
     }
     @RequestMapping(value="userLogin")
-    @ResponseBody
-    public String userLogin(User user) {
+    public String userLogin(User user, HttpServletRequest request) {
         String md5Password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user.setPassword(md5Password);
         User u = userService.findOneUser(user);
         if (u != null) {
-        return "欢迎登陆";
+        HttpSession session = request.getSession();
+        session.setAttribute("USER", u);
+        return "user/index";
         } else {
-//            redirect:userlogin.html?msg=2
-            return "登陆失败";
+            return "redirect:userlogin.html?msg=2";
         }
+    }
+    @RequestMapping(value="userLoginOut")
+    public String userLoginOut(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "user/index";
     }
     @RequestMapping(value="deleteUser")
     @ResponseBody
@@ -67,18 +75,5 @@ public class UserController {
         PageHelper.startPage(page, 5);//分页
         PageInfo<User> list = new PageInfo<>(userService.getAllUser());
         return list;
-    }
-    @RequestMapping(value="userExercise")
-    public String showUserExercise() {
-        return "user/showUserExercise";
-    }
-    @RequestMapping(value="doExercise")
-    public String doExercise(Integer id, Model model) {
-        model.addAttribute("ID", id);
-        return "user/doExercise";
-    }
-    @RequestMapping(value="userManage")
-    public String showUserIndex() {
-        return "admin/showUser";
     }
 }

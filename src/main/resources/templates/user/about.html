@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleleaf.org">
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>关于我们</title> 
@@ -7,7 +7,8 @@
   <link rel="stylesheet" type="text/css" href="css/inner.css" /> 
   <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script> 
   <script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
-  <script type="text/javascript" src="js/about.js"></script> 
+  <script type="text/javascript" src="js/about.js"></script>
+  <script type="text/javascript" src="js/userOut.js"></script>
  </head> 
  <body> 
   <header> 
@@ -15,7 +16,11 @@
     <div class="top"> 
      <div class="top_con"> 
       <div class="tel">
-      <a style="color: currentColor;" href="userlogin.html">登录/注册</a>
+      <a style="color: currentColor;" th:if="${session.USER != null}" 
+     th:text="'用户：'+${session.USER.userName}" href="userlogin.html"></a>
+     <img style="margin-bottom: -6px;margin-left:8px;" alt="注销" 
+     th:if="${session.USER != null}" src="images/out.jpg" onclick="loginOut()">
+      <a style="color: currentColor;" th:if="${session.USER == null}" href="userlogin.html">登录/注册</a>
       </div> 
       <div class="mail">
        咨询邮箱：sales@123.cn
@@ -31,11 +36,11 @@
       <div class="menu fr"> 
        <nav> 
         <ul> 
-         <li><a id="menu1" href="index.html">网站首页</a></li> 
-         <li><a id="menu2" href="about.html">关于我们</a></li>
-         <li><a id="menu3" href="/userExercise">笔试练习</a></li> 
-         <li><a id="menu4" href="news.html">面试技巧</a></li> 
-         <li><a id="menu5" href="service.html">校园招聘</a></li> 
+        <li><a id="menu1" href="/">网站首页</a></li> 
+         <li><a id="menu2" href="about">关于我们</a></li>
+         <li><a id="menu3" href="userExercise">笔试练习</a></li> 
+         <li><a id="menu4" href="skill">面试技巧</a></li> 
+         <li><a id="menu5" href="school">校园招聘</a></li> 
          <li><a id="menu6" href="solutions.html">讨论交流</a></li>
         </ul> 
         <div class="clear"></div> 
