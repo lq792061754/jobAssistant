@@ -77,4 +77,12 @@ public class ViewIndexController {
     public String showSchool() {
         return "user/school";
     }
+    @RequestMapping(value="talk")
+    public String showTalk() {
+        return "user/talk";
+    }
+    @RequestMapping(value="talkdetail")
+    public String showtallDetail() {
+        return "user/talkdetail";
+    }
 }
