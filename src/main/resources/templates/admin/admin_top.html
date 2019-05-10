@@ -19,7 +19,7 @@ function confirmAct() {
     <td width="61%" height="64"></td>
     <td width="39%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="74%" height="38" class="admin_txt">管理员：<strong><span th:text="${session.Admin.name}"></span></strong>&nbsp; 您好,感谢登陆使用！</td>
+        <td width="74%" height="38" class="admin_txt">管理员：<strong><span th:if="${session.Admin != null}" th:text="${session.Admin.name}"></span></strong>&nbsp; 您好,感谢登陆使用！</td>
         <td width="22%"><a href="/loginOut" onclick="return confirmAct();" target="_top" style="text-decoration: none;color: #fff">退出系统</a></td>
       </tr>
       <tr>

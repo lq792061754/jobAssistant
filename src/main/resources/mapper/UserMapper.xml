@@ -9,7 +9,7 @@
     VALUES(#{userName}, #{password}, #{email}, #{createTime})
   </insert>
   <select id="findOneUser" parameterType="User" resultType="User">
-    SELECT username, password FROM user WHERE username = #{userName} AND password = #{password}
+    SELECT id, username, password, email FROM user WHERE username = #{userName} AND password = #{password}
   </select>
   <select id="getAllUser" resultType="User">
     SELECT * FROM user ORDER BY id DESC
