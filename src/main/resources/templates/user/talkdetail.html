@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleleaf.org">
 <head>
 <title>帖子详情</title>
 <meta charset="utf-8">
@@ -13,32 +13,23 @@
 <link rel="stylesheet" type="text/css" href="plugin/pifu/pifu.css" />
 <link rel="stylesheet" type="text/css" href="plugin/wangEditor/css/wangEditor.min.css">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
+<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="js/loadJPostDetail.js"></script>
 </head>
 <body>
+<input id="userId" type="hidden" th:if="${session.USER != null}" th:value="${session.USER.id}">
+<input id="pid" type="hidden" th:if="${PID != null}" th:value="${PID}">
 <!--导航条-->
 <nav class="breadcrumb">
-  <div class="container"> <i class="Hui-iconfont">&#xe67f;</i> <a href="talk" class="c-primary">首页</a> <span class="c-gray en">&gt;</span>  <span class="c-gray">文章</span> <span class="c-gray en">&gt;</span>  <span class="c-gray">个人博客应该选择什么样的域名和域名后缀</span></div>
+  <div class="container"> <i class="Hui-iconfont">&#xe67f;</i> <a href="talk" class="c-primary">首页</a> <span class="c-gray en">&gt;</span>  
+  <span class="c-gray">文章</span> <span class="c-gray en">&gt;</span>  
+  <span id="title" class="c-gray"></span></div>
 </nav>
 <section class="container pt-20">	
 	<div class="row w_main_row">				
 				<div class="col-lg-9 col-md-9 w_main_left">
 					<div class="panel panel-default  mb-20">
-						<div class="panel-body pt-10 pb-10">
-							<h2 class="c_titile">我的个人博客之——阿里云空间选择</h2>
-							<p class="box_c"><span class="d_time">发布时间：2017-02-05</span><span>编辑：<a href="mailto:wfyv@qq.com">wilco</a></span><span>阅读（88646）</span></p>
-							<ul class="infos">
-								      <p>之前服务器放在电信机房， 联通用户访问速度很不稳定，经常出现访问速度慢的问题，换到阿里云解决了之前的问题。很多人都问我的博客选得什么空间，一年的费用得多少钱，今天我列个表出来，供大家参考。</p>
-								<p>在原 CentOS镜像的基础上，系统进一步安全加固，安装了阿里云独有的入侵防御系统，系统中会出现aegis进程，该系统增加了实时后门，Webshell检测，更加智能的暴力破解防御和多种入侵行为监控，让服务器更加安全可靠。</p>
-								<p><a href="http://www.aliyun.com/product/ecs" target="_blank"><strong><span style="color: rgb(0, 0, 255);">前往阿里云官网购买&gt;&gt;</span></strong></a></p>
-								<p>&nbsp;</p><p align="center" class="pageLink"></p>
-								
-							</ul>
-					
-							<div class="nextinfo">
-								<p class="last">上一篇：<a href="#">免费收录网站搜索引擎登录口大全</a></p>
-								<p class="next">下一篇：<a href="#">javascript显示年月日时间代码</a></p>
-						    </div>
-							
+						<div id="content" class="panel-body pt-10 pb-10">	
 						</div>
 					</div>
 					

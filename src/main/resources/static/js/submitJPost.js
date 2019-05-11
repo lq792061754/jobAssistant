@@ -9,8 +9,10 @@ function submitJPost() {
     	data: JPost,
         dataType: "json",
     	success : function(data){
-    		if (data.type == 1)
-    			alert("发布成功");
+    		if (data.type == 1) {
+    		alert("发布成功");
+		    window.location.reload();
+		    }	
     		else
     			alert("发布失败");
     	},

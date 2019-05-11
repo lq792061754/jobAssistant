@@ -4,8 +4,33 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace命名空间，唯一特性 -->
 <mapper namespace="com.lq.job.dao.JPostMapper">
+  <resultMap id="BaseResultMap" type="JPostVo">
+    <id column="post_id" jdbcType="INTEGER" property="post_id"/>
+    <result column="post_title" jdbcType="VARCHAR" property="post_title"/>
+    <result column="username" jdbcType="VARCHAR" property="writer"/>
+    <result column="post_content" jdbcType="VARCHAR" property="post_content"/>
+    <result column="pub_time" jdbcType="DATE" property="pub_time"/>
+    <result column="post_heat" jdbcType="INTEGER" property="post_heat"/>
+    <result column="post_comments_num" jdbcType="INTEGER" property="post_comments_num"/>
+    <result column="post_note" jdbcType="VARCHAR" property="post_note"/>
+  </resultMap>
   <insert id="insertJPost" parameterType="JPost">
     INSERT INTO job_post(post_title, writer_id, post_content, pub_time, post_heat, post_comments_num,post_note)
     VALUES(#{post_title}, #{writer_id}, #{post_content}, #{pub_time}, #{post_heat}, #{post_comments_num}, #{post_note})
   </insert>
+  <select id="getAllJPost" resultMap="BaseResultMap">
+    SELECT j.post_id, j.post_title, u.username, j.post_content, DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num,
+    j.post_note FROM job_post j, user u WHERE j.writer_id = u.id ORDER BY j.post_id DESC
+  </select>
+  <select id="getJPostById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT j.post_id, j.post_title, u.username, j.post_content, DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num,
+    j.post_note FROM job_post j, user u WHERE j.writer_id = u.id AND post_id = #{post_id}
+  </select>
+  <!-- mybatis大于&gt;、小于&lt;号要转义 -->
+  <select id="getPreJPost" parameterType="Integer" resultType="JPost">
+    SELECT post_id, post_title FROM job_post WHERE post_id = (SELECT MAX(post_id) FROM job_post WHERE post_id &lt; #{post_id})
+  </select>
+  <select id="getNextJPost" parameterType="Integer" resultType="JPost">
+    SELECT post_id, post_title FROM job_post WHERE post_id = (SELECT MIN(post_id) FROM job_post WHERE post_id &gt; #{post_id})
+  </select>
 </mapper>

@@ -82,7 +82,8 @@ public class ViewIndexController {
         return "user/talk";
     }
     @RequestMapping(value="talkdetail")
-    public String showtallDetail() {
+    public String showtallDetail(Integer post_id, Model model) {
+        model.addAttribute("PID", post_id);
         return "user/talkdetail";
     }
 }

@@ -34,6 +34,7 @@ public class ExerciseUploadController {
     @RequestMapping(value="uploadExercise")
     public String uploadExe(@RequestParam("filename")MultipartFile file, ExerciseTopic et, Model model) throws Exception {
         et.setEt_heat(0);
+        int rs = 0;
         int t = ets.insertExetopic(et);
         int et_id = et.getEt_id();
         String fileName = file.getOriginalFilename();
@@ -85,13 +86,16 @@ public class ExerciseUploadController {
                     }
                 }
                 if(wev != null){
-                    int rs = exeService.insertExercise(wev);
+                    rs = exeService.insertExercise(wev);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if (t > 0 && rs > 0)
         model.addAttribute("RESULT", "success");
+        else
+            model.addAttribute("RESULT", "failed");
         return "admin/uploadExercise";
     }
 
