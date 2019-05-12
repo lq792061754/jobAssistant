@@ -37,5 +37,10 @@ public class JPostServiceImpl implements JPostService {
         // TODO Auto-generated method stub
         return jPostMapper.getNextJPost(id);
     }
+    @Override
+    public Integer addComNum(Integer id) {
+        // TODO Auto-generated method stub
+        return jPostMapper.addComNum(id);
+    }
 
 }

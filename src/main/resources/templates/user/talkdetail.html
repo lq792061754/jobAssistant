@@ -15,6 +15,7 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
 <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="js/loadJPostDetail.js"></script>
+<script type="text/javascript" src="js/submitReply.js"></script>
 </head>
 <body>
 <input id="userId" type="hidden" th:if="${session.USER != null}" th:value="${session.USER.id}">
@@ -41,17 +42,16 @@
 							        <!--用于评论-->
 							        <div class="mt-20" id="ct">
 							            <div id="err" class="Huialert Huialert-danger hidden radius">成功状态提示</div>
-							            <textarea id="textarea1" name="comment" style="height:200px;" placeholder="看完不留一发？"> </textarea>
+							            <textarea id="textarea1" name="comment" style="height:200px;"> </textarea>
 							            <div class="text-r mt-10">
-							                <button onclick="getPlainTxt()" class="btn btn-primary radius" > 发表评论</button>
+							                <button onclick="pubComment()" class="btn btn-primary radius" > 发表评论</button>
 							            </div>
 							        </div>
 							
 							        <div class="line"></div>
 							
-							        <ul class="commentList mt-50">
-							
-							          <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="img/head4.jpg"></i></a>
+							        <ul id="showComment" class="commentList mt-50">
+							          <!-- <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="img/head4.jpg"></i></a>
 							                <div class="comment-main">
 							                    <header class="comment-header">
 							                        <div class="comment-meta"><a class="comment-author" href="#">老王</a>
@@ -59,25 +59,12 @@
 							                        </div>
 							                    </header>
 							                    <div class="comment-body">
-							                        你是猴子派来的救兵吗？
 							                        <ul class="commentList">
-							                            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="img/head1.jpg"></i></a>
-							                                <div class="comment-main">
-							                                    <header class="comment-header">
-							                                        <div class="comment-meta"><a class="comment-author" href="#">老王</a>
-							                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20" class="f-r">2014-8-31 15:20</time>
-							                                        </div>
-							                                    </header>
-							                                    <div class="comment-body">
-							                                        <p> 是的</p>
-							                                    </div>
-							                                </div>
-							                            </li>
 							                            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="img/head2.jpg"></i></a>
 							                                <div class="comment-main">
 							                                    <header class="comment-header">
 							                                        <div class="comment-meta"><a class="comment-author" href="#">老王</a>
-							                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20" class="f-r">2014-8-31 15:20</time>
+							                                            <time class="f-r">2014-8-31 15:20</time>
 							                                        </div>
 							                                    </header>
 							                                    <div class="comment-body">
@@ -85,37 +72,18 @@
 							                                    </div>
 							                                </div>
 							                            </li>
-							
 							                        </ul>
-							
 							                        <button class="hf f-r btn btn-default size-S mt-10" name="2">回复</button>
-							
 							                    </div>
 							                </div>
-							            </li>
-							            <li class="item cl"> <a href="#"><i class="avatar size-L radius">
-										<img alt="头像" src="img/head3.jpg"></i></a>
-							                <div class="comment-main">
-							                    <header class="comment-header">
-							                        <div class="comment-meta"><a class="comment-author" href="#">老王</a>
-							                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20" class="f-r">2014-8-31 15:20</time>
-							                        </div>
-							                    </header>
-							                    <div class="comment-body">
-							                        你是猴子派来的救兵吗？
-							
-							                        <button class="hf f-r btn btn-default size-S mt-10" name="3">回复</button>
-							
-							                    </div>
-							                </div>
-							            </li>
-							
+							            </li> -->
+							            <li id="error" style="font-size:15px"></li>
 							        </ul>
 							        <!--用于回复-->
 							        <div class="comment hidden mt-20">
 							            <div id="err2" class="Huialert Huialert-danger hidden radius">成功状态提示</div>
-							            <textarea class="textarea" style="height:100px;" > </textarea>
-							            <button onclick="hf(this);" type="button" class="btn btn-primary radius mt-10">回复</button>
+							            <textarea id="replyContent" class="textarea" style="height:100px;" > </textarea>
+							            <button onclick="submitReply();" type="button" class="btn btn-primary radius mt-10">回复</button>
 							            <a class="cancelReply f-r mt-10">取消回复</a>
 							        </div>
 						</div>
@@ -201,6 +169,15 @@
         $(".cancelReply").on('click',function () {
             $(this).parents(".comment-body").find(".hf").show();
             $(this).parents(".comment-body").find(".comment").remove();
+        });
+    });
+    $(function() {
+        $('#showComment').on('click', '#reply', function() {//动态添加元素的click事件
+        pId = $(this).attr("name");
+        $(this).parents(".commentList").find(".cancelReply").trigger("click");
+        $(this).parent(".comment-body").append($(".comment").clone(true));
+        $(this).parent(".comment-body").find(".comment").removeClass("hidden");
+        $(this).hide();
         });
     });
 </script>

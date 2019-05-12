@@ -26,7 +26,7 @@ public class JPostController {
     @ResponseBody
     public Map<String, Object> insertJPost(JPost jPost) {
         Map<String, Object> map = new HashMap<String, Object>();
-        if (jPost != null) {
+        if (jPost.getWriter_id() != null) {
             jPost.setPub_time(sdf.format(new Date()));
             jPost.setPost_heat(0);
             jPost.setPost_comments_num(0);

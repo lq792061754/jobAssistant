@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，唯一特性 -->
+<mapper namespace="com.lq.job.dao.ReplyMapper">
+  <resultMap type="ReplyVo" id="BaseReplyVo">
+    <id column="reply_id" jdbcType="INTEGER" property="reply_id"/>
+    <result column="comment_id" jdbcType="INTEGER" property="comment_id"/>
+    <result column="username" jdbcType="VARCHAR" property="replier"/>
+    <result column="reply_content" jdbcType="VARCHAR" property="reply_content"/>
+    <result column="reply_time" jdbcType="DATE" property="reply_time"/>
+    <result column="reply_note" jdbcType="VARCHAR" property="reply_note"/>
+  </resultMap>
+  <insert id="insertReply" parameterType="Reply">
+    INSERT INTO reply(comment_id, replier_id, reply_content, reply_time, reply_note)
+    VALUES(#{comment_id}, #{replier_id}, #{reply_content}, #{reply_time}, #{reply_note})
+  </insert>
+  <select id="getAllReplyByComId" parameterType="Integer" resultMap="BaseReplyVo">
+    SELECT r.comment_id, u.username, r.reply_content, r.reply_time FROM reply r INNER JOIN user u
+    ON r.replier_id = u.id WHERE r.comment_id = #{r.comment_id}
+  </select>
+</mapper>
