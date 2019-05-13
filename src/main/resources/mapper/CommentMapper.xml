@@ -10,14 +10,20 @@
     <result column="username" jdbcType="VARCHAR" property="commenter"/>
     <result column="comment_content" jdbcType="VARCHAR" property="comment_content"/>
     <result column="comment_time" jdbcType="DATE" property="comment_time"/>
-    <result column="comment_note" jdbcType="VARCHAR" property="comment_note"/>
+    <result column="comment_note" jdbcType="INTEGER" property="comment_note"/>
   </resultMap>
   <insert id="insertComment" parameterType="Comment">
-    INSERT INTO comment(post_id, commenter_id, comment_content, comment_time, comment_note)
-    VALUES(#{post_id}, #{commenter_id}, #{comment_content}, #{comment_time}, #{comment_note})
+    INSERT INTO comment(post_id, commenter_id, comment_content, comment_time, comment_note, comment_flag)
+    VALUES(#{post_id}, #{commenter_id}, #{comment_content}, #{comment_time}, #{comment_note}, #{comment_flag})
   </insert>
   <select id="getAllComment" resultMap="BaseCommentVo">
-    SELECT c.comment_id, c.commenter_id, c.comment_content, u.username, DATE_FORMAT(c.comment_time, '%Y-%m-%d %H:%i:%S') comment_time FROM
-    comment c INNER JOIN user u ON c.commenter_id = u.id WHERE c.post_id = #{post_id} ORDER BY c.comment_id DESC
+    SELECT c.comment_id, c.commenter_id, c.comment_content, u.username, 
+    DATE_FORMAT(c.comment_time, '%Y-%m-%d %H:%i:%S') comment_time, c.comment_note
+    FROM
+    comment c INNER JOIN user u ON c.commenter_id = u.id 
+    WHERE c.post_id = #{post_id} ORDER BY c.comment_id DESC
   </select>
+  <update id="addComNoteById" parameterType="Integer">
+    UPDATE comment SET comment_note = comment_note + 1 WHERE comment_id = #{comment_id}
+  </update>
 </mapper>

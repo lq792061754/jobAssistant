@@ -4,7 +4,7 @@ function submitJPost() {
     JPost["post_title"] = $("#post_title").val();
     JPost["post_content"] = $("#textarea1").val();
     $.ajax({
-    	type: "GET",
+    	type: "POST",
     	url: "/insertJPost",
     	data: JPost,
         dataType: "json",

@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,13 +26,14 @@ public class CommentController {
     private CommentService commentService;
     @Autowired
     private JPostService jPostService;
-    @RequestMapping(value="insertComment")
+    @RequestMapping(value="insertComment", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> insertCom(Comment comment) {
         Map<String, Object> map = new HashMap<String, Object>();
         if (comment.getCommenter_id() != null) {
             comment.setComment_time(sdf.format(new Date()));
-            comment.setComment_note(null);
+            comment.setComment_note(0);
+            comment.setComment_flag("1");
             int i = commentService.insertComment(comment);
             jPostService.addComNum(comment.getPost_id());
             if (i > 0) {

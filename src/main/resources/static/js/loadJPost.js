@@ -17,8 +17,8 @@
 				"<div class='date_hits'>" +
 				"<span><i class='Hui-iconfont' title='热度'>&#xe62c;</i>作者："+list[i].writer+"</span>" +
 				"<span><i class='Hui-iconfont' title='评论'>&#xe690;</i>时间："+list[i].pub_time+"</span>" +
-				"<p class='hits'><i class='Hui-iconfont' title='点击量'>&#xe6c1;</i>"+list[i].post_heat+"°</p>" +
-				"<p class='commonts'><i class='Hui-iconfont' title='点击量'>&#xe622;</i>" +
+				"<p class='hits'><i class='Hui-iconfont' title='热度'>&#xe6c1;</i>"+list[i].post_heat+"°</p>" +
+				"<p class='commonts'><i class='Hui-iconfont' title='评论'>&#xe622;</i>" +
 				"<span class='cy_cmt_count'>"+list[i].post_comments_num+"</span></p>" +
 				"</div>" +
 				"<div class='desc'>"+list[i].post_content+"</div></li>";

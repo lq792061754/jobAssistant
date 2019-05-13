@@ -36,4 +36,7 @@
   <update id="addComNum" parameterType="Integer">
     UPDATE job_post SET post_comments_num = post_comments_num + 1 WHERE post_id = #{post_id}
   </update>
+  <update id="addComHeat" parameterType="Integer">
+    UPDATE job_post SET post_heat = post_heat + 1 WHERE post_id = #{post_id}
+  </update>
 </mapper>

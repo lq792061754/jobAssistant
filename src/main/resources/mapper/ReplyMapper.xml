@@ -17,7 +17,7 @@
     VALUES(#{comment_id}, #{replier_id}, #{reply_content}, #{reply_time}, #{reply_note})
   </insert>
   <select id="getAllReplyByComId" parameterType="Integer" resultMap="BaseReplyVo">
-    SELECT r.comment_id, u.username, r.reply_content, r.reply_time FROM reply r INNER JOIN user u
-    ON r.replier_id = u.id WHERE r.comment_id = #{r.comment_id}
+    SELECT r.comment_id, u.username, r.reply_content, DATE_FORMAT(r.reply_time, '%Y-%m-%d %H:%i:%S') reply_time FROM reply r INNER JOIN user u
+    ON r.replier_id = u.id WHERE r.comment_id = #{r.comment_id} ORDER BY r.reply_id DESC
   </select>
 </mapper>

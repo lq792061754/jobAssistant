@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,7 +23,7 @@ public class JPostController {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
     private JPostService jPostService;
-    @RequestMapping(value="insertJPost")
+    @RequestMapping(value="insertJPost", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> insertJPost(JPost jPost) {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -54,6 +55,7 @@ public class JPostController {
     @RequestMapping(value="showJPostDetail")
     @ResponseBody
     public Map<String, Object> showJPostDetail(Integer id) {
+        jPostService.addComHeat(id);
         JPostVo j = jPostService.getJPostById(id);
         JPost pre = jPostService.getPreJPost(id);
         JPost next = jPostService.getNextJPost(id);

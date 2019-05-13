@@ -3,18 +3,18 @@ package com.lq.job.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.lq.job.domain.Reply;
 import com.lq.job.domain.ReplyVo;
+import com.lq.job.service.CommentService;
 import com.lq.job.service.ReplyService;
 
 @Controller
@@ -22,7 +22,9 @@ public class ReplyController {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
     private ReplyService replyService;
-    @RequestMapping(value="insertReply")
+    @Autowired
+    private CommentService comService;
+    @RequestMapping(value="insertReply", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> insertReply(Reply reply) {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -30,6 +32,7 @@ public class ReplyController {
             reply.setReply_time(sdf.format(new Date()));
             reply.setReply_note(null);
             int i = replyService.insertReply(reply);
+            comService.addComNoteById(reply.getComment_id());
             if (i > 0)
                 map.put("MSG", 1);//插入成功
             else
@@ -41,11 +44,8 @@ public class ReplyController {
     }
     @RequestMapping(value="getAllReply")
     @ResponseBody
-    public PageInfo<ReplyVo> showReply(@RequestParam(defaultValue="1")Integer page, Integer id) {
-        PageHelper.startPage(page, 5);//分页
-        PageInfo<ReplyVo> list = new PageInfo<>(replyService.getAllReplyByComId(id));
-        if (page > list.getPageNum())
-            list = null;
+    public List<ReplyVo> showReply(Integer id) {
+        List<ReplyVo> list = replyService.getAllReplyByComId(id);
         return list;
     }
 }

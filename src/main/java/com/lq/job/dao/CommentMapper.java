@@ -8,4 +8,5 @@ import com.lq.job.domain.CommentVo;
 public interface CommentMapper {
     public Integer insertComment(Comment c);
     public List<CommentVo> getAllComment(Integer id);
+    public Integer addComNoteById(Integer id);
 }

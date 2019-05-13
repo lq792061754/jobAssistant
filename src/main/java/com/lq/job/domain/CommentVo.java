@@ -6,7 +6,8 @@ public class CommentVo {
     private String commenter;
     private String comment_content;
     private String comment_time;
-    private String comment_note;
+    private Integer comment_note;
+    private String comment_flag;
     public Integer getComment_id() {
         return comment_id;
     }
@@ -31,16 +32,23 @@ public class CommentVo {
     public void setComment_time(String comment_time) {
         this.comment_time = comment_time;
     }
-    public String getComment_note() {
-        return comment_note;
-    }
-    public void setComment_note(String comment_note) {
-        this.comment_note = comment_note;
-    }
+
     public String getCommenter() {
         return commenter;
     }
     public void setCommenter(String commenter) {
         this.commenter = commenter;
+    }
+    public Integer getComment_note() {
+        return comment_note;
+    }
+    public void setComment_note(Integer comment_note) {
+        this.comment_note = comment_note;
+    }
+    public String getComment_flag() {
+        return comment_flag;
+    }
+    public void setComment_flag(String comment_flag) {
+        this.comment_flag = comment_flag;
     }
 }
