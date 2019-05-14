@@ -39,4 +39,14 @@
   <update id="addComHeat" parameterType="Integer">
     UPDATE job_post SET post_heat = post_heat + 1 WHERE post_id = #{post_id}
   </update>
+  <select id="getAllJPostById" parameterType="Integer" resultType="JPost">
+    SELECT post_id, post_title, writer_id, post_content, DATE_FORMAT(pub_time, '%Y-%m-%d') pub_time, post_heat, post_comments_num
+    FROM job_post WHERE writer_id = #{writer_id} ORDER BY post_id DESC
+  </select>
+  <select id="getAllJPostByCom" resultMap="BaseResultMap">
+    SELECT j.post_id, j.post_title, u.username, j.post_content, 
+    DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num, j.post_note 
+    FROM job_post j INNER JOIN USER u ON j.writer_id = u.id 
+    LEFT JOIN COMMENT c ON j.post_id = c.post_id ORDER BY c.commenter_id DESC
+  </select>
 </mapper>

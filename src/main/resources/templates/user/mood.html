@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleleaf.org">
+<head>
+<title>我的帖子</title>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/staticRes/js/html5shiv.js"></script>
+<script type="text/javascript" src="/staticRes/js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="plugin/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="plugin/Hui-iconfont/1.0.8/iconfont.min.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="plugin/pifu/pifu.css" />
+<link rel="stylesheet" type="text/css" href="css/timeline.css" />
+<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script> 
+<script type="text/javascript" src="js/loadMood.js"></script>
+<!--[if lt IE 9]>
+<link href="/staticRes/lib/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
+</head>
+<body>
+<!--导航条-->
+<nav class="breadcrumb">
+    <div class="container"><i class="Hui-iconfont">&#xe67f;</i> <a href="talk" class="c-primary">首页</a>
+    <span class="c-gray en">&gt;</span> <span class="c-gray">我的帖子</span></div>
+</nav>
+<input id="userId" type="hidden" th:if="${session.USER != null}" th:value="${session.USER.id}">
+<section class="container mt-20">
+    <div class="container-fluid">
+        <div class="timeline">
+        </div>
+    </div>
+
+</section>
+<footer class="footer mt-20">
+    <div class="container-fluid" id="foot">
+        <p>Copyright &copy; 2016-2017 www.wfyvv.com <br>
+            <a href="#" target="_blank">皖ICP备17002922号</a><br>
+        </p>
+    </div>
+</footer>
+<script type="text/javascript" src="plugin/layer/3.0/layer.js"></script>
+<script type="text/javascript" src="plugin/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="plugin/pifu/pifu.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script> $(function(){ $(window).on("scroll",backToTopFun); backToTopFun(); }); </script>
+<script>
+    $(function () {
+        //on scolling, show/animate timeline blocks when enter the viewport
+        $(window).on('scroll', function () {
+            $('.cd-timeline-block').each(function () {
+                if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                }
+                if ($(window).scrollTop() - $(this).offset().top > 0) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden').removeClass('bounce-in');
+                }
+                
+            });
+           $('.cd-timeline-block').each(function(){
+                if($(this).offset().top < $(window).scrollTop()+$(window).height()*0.75) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden');
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

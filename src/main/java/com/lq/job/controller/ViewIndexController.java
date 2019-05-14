@@ -86,4 +86,18 @@ public class ViewIndexController {
         model.addAttribute("PID", post_id);
         return "user/talkdetail";
     }
+    @RequestMapping(value="mydetail")
+    public String showmyDetail(Integer post_id, Model model) {
+        model.addAttribute("PID", post_id);
+        return "user/mydetail";
+    }
+    @RequestMapping(value="mypost")
+    public String mypost() {
+        return "user/mood";
+    }
+    @RequestMapping(value="answerme")
+    public String showAnswerme(Integer post_id, Model model) {
+        model.addAttribute("PID", post_id);
+        return "user/answerme";
+    }
 }

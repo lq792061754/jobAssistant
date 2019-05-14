@@ -47,5 +47,15 @@ public class JPostServiceImpl implements JPostService {
         // TODO Auto-generated method stub
         return jPostMapper.addComHeat(id);
     }
+    @Override
+    public List<JPost> getAllJPostById(Integer id) {
+        // TODO Auto-generated method stub
+        return jPostMapper.getAllJPostById(id);
+    }
+    @Override
+    public List<JPostVo> getAllJPostByCom() {
+        // TODO Auto-generated method stub
+        return jPostMapper.getAllJPostByCom();
+    }
 
 }

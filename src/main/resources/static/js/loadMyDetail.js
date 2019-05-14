@@ -37,8 +37,7 @@ $(document).ready(function(){//初始化	加载
 		    dataType: "json",
 		    success: function (data){
 		    	var list = data.list;
-		    	if (list == "")	
-		    		$("#error").append("还没有评论...");
+		    	var flag = true;	
 		    for (var i in list) {
 		    	var body = "<li class='item cl'> <i class='avatar size-L radius'>" +
 		    			"<img alt='头像' src='img/head3.jpg'></i>" +
@@ -52,13 +51,16 @@ $(document).ready(function(){//初始化	加载
 		    			  "</div>" +
 		    			"</header>" +
 		    				"<div class='comment-body'>"+list[i].comment_content+
-		    			"<ul class='commentList"+x+"' style='display:none'></ul><button id='reply' class='hf f-r btn btn-default size-S mt-10'>回复" +"</button>" +
+		    			"<ul class='commentList"+x+"' style='display:none'></ul>" +
 		    				"</div>" +
 		    			"</div>" +
 		    			"</li>";
 		    $("#showComment").append(body);
 		    x++;
+		    flag = false;
 		      }
+		    if (flag)
+		    $("#error").append("还没有评论...");
 		},
 		    error: function() {//失败的回调函数
 		    	alert("请求失败...");
@@ -83,22 +85,6 @@ $(document).ready(function(){//初始化	加载
 				"<ul class='infos'>"+data.JPostVo.post_content +
 				"<p>&nbsp;</p>" +
 				"</ul>";
-		if (data.NEXT == null && data.PRE != null) {
-			body = body + "<div class='nextinfo' style='color: black;'>" +
-			"<p class='last'>上一篇：<a style='color:royalblue;font-size: 15px' href='talkdetail?post_id="+data.PRE.post_id+"'>"+data.PRE.post_title+"</a></p>" +
-			"</div>"
-		}
-		if (data.PRE == null && data.NEXT != null) {
-			body = body + "<div class='nextinfo'>" +
-			"<p class='next'>下一篇：<a style='color:royalblue;font-size: 15px' href='talkdetail?post_id="+data.NEXT.post_id+"'>"+data.NEXT.post_title+"</a></p>" +
-			"</div>"
-		}
-		if (data.PRE != null && data.NEXT != null) {
-			body = body + "<div class='nextinfo'>" +
-			"<p class='last'>上一篇：<a style='color:royalblue;font-size: 15px' href='talkdetail?post_id="+data.PRE.post_id+"'>"+data.PRE.post_title+"</a></p>" +
-			"<p class='next'>下一篇：<a style='color:royalblue;font-size: 15px' href='talkdetail?post_id="+data.NEXT.post_id+"'>"+data.NEXT.post_title+"</a></p>" +
-			"</div>"
-		}
 		$("#content").append(body);
 				}, 
 				error: function() {   //失败的回调函数

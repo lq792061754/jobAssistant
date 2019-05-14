@@ -27,5 +27,15 @@ public class CommentServiceImpl implements CommentService {
         // TODO Auto-generated method stub
         return comMapper.addComNoteById(id);
     }
+    @Override
+    public List<CommentVo> getReplyComment(Integer id) {
+        // TODO Auto-generated method stub
+        return comMapper.getReplyComment(id);
+    }
+    @Override
+    public Integer getReplyComNum(Integer id) {
+        // TODO Auto-generated method stub
+        return comMapper.getReplyComNum(id);
+    }
 
 }

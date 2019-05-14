@@ -13,4 +13,6 @@ public interface JPostMapper {
     public JPost getNextJPost(Integer id);
     public Integer addComNum(Integer id);
     public Integer addComHeat(Integer id);
+    public List<JPost> getAllJPostById(Integer id);
+    public List<JPostVo> getAllJPostByCom();
 }

@@ -53,5 +53,19 @@ public class CommentController {
         PageInfo<CommentVo> list = new PageInfo<>(commentService.getAllComment(id));
         return list;
     }
+    @RequestMapping(value="getReplyComment")
+    @ResponseBody
+    public PageInfo<CommentVo> getReplyCom(@RequestParam(defaultValue="1")Integer page, Integer id) {
+        PageHelper.startPage(page, 5);//分页
+        PageInfo<CommentVo> list = new PageInfo<>(commentService.getReplyComment(id));
+        return list;
+    }
+    @RequestMapping(value="getReplyComNum")
+    @ResponseBody
+    public Map<String, Object> getReplyComNum(Integer id) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("NEWCOM", commentService.getReplyComNum(id));
+        return map;
+    }
 
 }

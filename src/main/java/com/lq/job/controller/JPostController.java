@@ -52,6 +52,22 @@ public class JPostController {
             list = null;
         return list;
     }
+    @RequestMapping(value="showJPostByCom")
+    @ResponseBody
+    public PageInfo<JPostVo> showJPostBycom(@RequestParam(defaultValue="1")Integer page) {
+        PageHelper.startPage(page, 5);//分页
+        PageInfo<JPostVo> list = new PageInfo<>(jPostService.getAllJPostByCom());
+        if (page > list.getPageNum())
+            list = null;
+        return list;
+    }
+    @RequestMapping(value="showMyJPost")
+    @ResponseBody
+    public PageInfo<JPost> showMyJPost(@RequestParam(defaultValue="1")Integer page, Integer id) {
+        PageHelper.startPage(page, 5);//分页
+        PageInfo<JPost> list = new PageInfo<>(jPostService.getAllJPostById(id));
+        return list;
+    }
     @RequestMapping(value="showJPostDetail")
     @ResponseBody
     public Map<String, Object> showJPostDetail(Integer id) {

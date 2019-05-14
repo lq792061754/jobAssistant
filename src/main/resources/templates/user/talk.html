@@ -13,6 +13,22 @@
 <link rel="stylesheet" type="text/css" href="plugin/pifu/pifu.css" />
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
 <link rel="stylesheet" type="text/css" href="css/jquery.my-modal.1.1.winStyle.css" />
+<style type="text/css">
+.ii{
+        display: none;
+        background: #f00;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        top: 5px;
+        right: 0px;
+        position: absolute;
+        text-align: center;
+        color: #FFF;
+        z-index: 99999;
+    }
+</style>
   <link rel="stylesheet" type="text/css" href="css/index.css" />
   <link rel="stylesheet" type="text/css" href="plugin/wangEditor/css/wangEditor.min.css">
   <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script> 
@@ -88,25 +104,12 @@
   		
 		<div class="mt-20 bg-fff box-shadow radius mb-5">
 			<div class="tab-category">
-				<a href=""><strong class="current">最新发布</strong></a>
-				<a href="" style="border-bottom: 1px;"><strong class="current">最新回复</strong></a>
+				<a id="pub" href="talk"><strong class="current">最新发布</strong></a>
+				<a id="rep" href="#" onclick="newRep()" style="border-bottom: 1px;"><strong class="current">最新回复</strong></a>
 			</div>
 		</div>
 		<div class="art_content">
 			<ul class="index_arc">
-				<!-- <li class="index_arc_item">
-	            <a href="/article/4" class="pic">
-	                <img class="lazyload" data-original="temp/art.jpg" alt="centos 6.5 nginx安装及配置" >
-	            </a>
-	        <h4 class="title"><a href="/article/4">centos 6.5 nginx安装及配置</a></h4>
-	        <div class="date_hits">
-	            <span>老王</span>
-	            <span>2017-3-15</span>
-	            <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 13° </p>
-	            <p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span></p>
-	        </div>
-	        <div class="desc">linux环境中nginx安装及配置简要概述。。。</div>
-	    </li> -->
            </ul>
   		<div class="text-c mb-20" id="moreBlog">
 	        <a class="btn  radius btn-block " href="javascript:;" onclick="loadMore();">点击加载更多</a>
@@ -146,8 +149,10 @@
                 <ul class="index_recd">
                     <li class="index_recd_item"><i class="Hui-iconfont">&#xe653;&nbsp;&nbsp;</i><label th:if="${session.USER != null}" th:text="${session.USER.userName}"></label></li>
                     <li class="index_recd_item"><i class="Hui-iconfont">&#xe63b;&nbsp;&nbsp;</i><label th:if="${session.USER != null}" th:text="${session.USER.email}"></label></li>
-                    <li class="index_recd_item" style="float: left;margin-right: 90px;"><img style="width:15px;height:12px" src="img/myjoin.png">&nbsp;&nbsp;<a href="#">回复我的</a></li>
-                    <li class="index_recd_item"><img style="width:15px;height:12px" src="img/atme.jpg">&nbsp;&nbsp;<a href="#">我的帖子</a></li>
+                    <li class="index_recd_item" style="float: left;margin-right: 90px;">
+                    <img style="width:15px;height:12px" src="img/myjoin.png">&nbsp;&nbsp;
+                    <a href="answerme">回复我的<span style="margin-right: 200px;margin-top: 183px;" id="msgNum" class="ii">4</span></a></li>
+                    <li class="index_recd_item"><img style="width:15px;height:12px" src="img/atme.jpg">&nbsp;&nbsp;<a href="mypost">我的帖子</a></li>
                 </ul>
             </div>
         </div>
@@ -231,16 +236,6 @@
 				<span><i class="Hui-iconfont">&#xe6f1;</i><a href="#" class="btn-link">阿里巴巴</a></span>
 			</div>
 		</div>
-        
-		<!--分享-->
-        <div class="bg-fff box-shadow radius mb-20">
-            <div class="tab-category">
-                <a href=""><strong>站点分享</strong></a>
-            </div>
-            <div class="panel-body">
-                <div class="bdsharebuttonbox Hui-share"><a href="#" class="bds_weixin Hui-iconfont" data-cmd="weixin" title="分享到微信">&#xe694;</a><a href="#" class="bds_qzone Hui-iconfont" data-cmd="qzone" title="分享到QQ空间">&#xe6c8;</a> <a href="#" class="bds_sqq Hui-iconfont" data-cmd="sqq" title="分享到QQ好友">&#xe67b;</a> <a href="#" class="bds_tsina Hui-iconfont" data-cmd="tsina" title="分享到新浪微博">&#xe6da;</a> <a href="#" class="bds_tqq Hui-iconfont" data-cmd="tqq" title="分享到腾讯微博">&#xe6d9;</a></div>
-            </div>
-        </div>
   </div>
   
 </section>
