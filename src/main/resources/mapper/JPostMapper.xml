@@ -40,7 +40,7 @@
     UPDATE job_post SET post_heat = post_heat + 1 WHERE post_id = #{post_id}
   </update>
   <select id="getAllJPostById" parameterType="Integer" resultType="JPost">
-    SELECT post_id, post_title, writer_id, post_content, DATE_FORMAT(pub_time, '%Y-%m-%d') pub_time, post_heat, post_comments_num
+    SELECT post_id, post_title, writer_id, post_content, DATE_FORMAT(pub_time, '%Y-%m-%d %H:%i:%S') pub_time, post_heat, post_comments_num
     FROM job_post WHERE writer_id = #{writer_id} ORDER BY post_id DESC
   </select>
   <select id="getAllJPostByCom" resultMap="BaseResultMap">

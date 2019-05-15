@@ -37,5 +37,10 @@ public class CommentServiceImpl implements CommentService {
         // TODO Auto-generated method stub
         return comMapper.getReplyComNum(id);
     }
+    @Override
+    public Integer updateSetComLooked(Integer id) {
+        // TODO Auto-generated method stub
+        return comMapper.updateSetComLooked(id);
+    }
 
 }

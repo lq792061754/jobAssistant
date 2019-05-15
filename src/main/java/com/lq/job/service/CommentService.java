@@ -11,4 +11,5 @@ public interface CommentService {
     public Integer addComNoteById(Integer id);
     public List<CommentVo> getReplyComment(Integer id);
     public Integer getReplyComNum(Integer id);
+    public Integer updateSetComLooked(Integer id);
 }

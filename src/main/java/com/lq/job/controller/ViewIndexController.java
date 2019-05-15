@@ -96,8 +96,8 @@ public class ViewIndexController {
         return "user/mood";
     }
     @RequestMapping(value="answerme")
-    public String showAnswerme(Integer post_id, Model model) {
-        model.addAttribute("PID", post_id);
+    public String showAnswerme(Integer id, Model model) {
+        model.addAttribute("ID", id);
         return "user/answerme";
     }
 }

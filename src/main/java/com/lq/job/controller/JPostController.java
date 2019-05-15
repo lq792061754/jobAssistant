@@ -3,6 +3,7 @@ package com.lq.job.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,26 +47,31 @@ public class JPostController {
     @RequestMapping(value="showJPost")
     @ResponseBody
     public PageInfo<JPostVo> showJPost(@RequestParam(defaultValue="1")Integer page) {
+        List<JPostVo> li = jPostService.getAllJPost();
         PageHelper.startPage(page, 5);//分页
-        PageInfo<JPostVo> list = new PageInfo<>(jPostService.getAllJPost());
+        PageInfo<JPostVo> list = new PageInfo<>(li);
         if (page > list.getPageNum())
-            list = null;
+            li.clear();
         return list;
     }
     @RequestMapping(value="showJPostByCom")
     @ResponseBody
     public PageInfo<JPostVo> showJPostBycom(@RequestParam(defaultValue="1")Integer page) {
+        List<JPostVo> li = jPostService.getAllJPostByCom();
         PageHelper.startPage(page, 5);//分页
-        PageInfo<JPostVo> list = new PageInfo<>(jPostService.getAllJPostByCom());
+        PageInfo<JPostVo> list = new PageInfo<>(li);
         if (page > list.getPageNum())
-            list = null;
+            li.clear();
         return list;
     }
     @RequestMapping(value="showMyJPost")
     @ResponseBody
     public PageInfo<JPost> showMyJPost(@RequestParam(defaultValue="1")Integer page, Integer id) {
+        List<JPost> li = jPostService.getAllJPostById(id);
         PageHelper.startPage(page, 5);//分页
-        PageInfo<JPost> list = new PageInfo<>(jPostService.getAllJPostById(id));
+        PageInfo<JPost> list = new PageInfo<>(li);
+        if (page > list.getPageNum())
+            li.clear();
         return list;
     }
     @RequestMapping(value="showJPostDetail")

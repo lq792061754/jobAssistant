@@ -13,6 +13,10 @@
 		     dataType: "json",
 		     success: function (data){
 		var list = data.list;
+		if (list == ""){
+			$("#nomore").empty();
+			$("#nomore").append("<span style='font-size: 15px;'>没有更多了...</span>");
+		}
 		for (var i in list){
 		var body = "<li class='index_arc_item no_pic'>" +
 				"<h3 class='title'><a style='color:cadetblue' href='talkdetail?post_id="+list[i].post_id+"'>"+list[i].post_title+"</a></h3>" +
@@ -31,7 +35,7 @@
 		}
 				}, 
 				error: function() {   //失败的回调函数
-					alert("没有更多了...");
+					alert("请求失败...");
 				} 
 			})		
 }

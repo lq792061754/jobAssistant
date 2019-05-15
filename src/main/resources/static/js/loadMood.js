@@ -13,8 +13,10 @@ var x = 0;
 		     dataType: "json",
 		     success: function (data){
 		var list = data.list;
-		if (list == "")
-			$(".timeline").append("还没有发帖...");
+		if (list == ""){
+			$("#nomood").empty();
+			$("#nomood").append("<span style='font-size: 15px;'>没有更多了...</span>");
+		}
 		for (var i in list){
 		var body = "<div class='cd-timeline-block'>" +
 				"<div class='cd-timeline-img cd-picture'>" +
@@ -43,7 +45,7 @@ var x = 0;
 				} 
 			})		
 }
-	function loadMore() {
+	function loadMoreMood() {
 		num = num + 1;
 		loadPage(num);
 	}

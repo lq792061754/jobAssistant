@@ -111,6 +111,7 @@
 		<div class="art_content">
 			<ul class="index_arc">
            </ul>
+           <div id="nomore"></div>
   		<div class="text-c mb-20" id="moreBlog">
 	        <a class="btn  radius btn-block " href="javascript:;" onclick="loadMore();">点击加载更多</a>
 	        <a class="btn  radius btn-block hidden" href="javascript:;">加载中……</a>
@@ -151,7 +152,7 @@
                     <li class="index_recd_item"><i class="Hui-iconfont">&#xe63b;&nbsp;&nbsp;</i><label th:if="${session.USER != null}" th:text="${session.USER.email}"></label></li>
                     <li class="index_recd_item" style="float: left;margin-right: 90px;">
                     <img style="width:15px;height:12px" src="img/myjoin.png">&nbsp;&nbsp;
-                    <a href="answerme">回复我的<span style="margin-right: 200px;margin-top: 183px;" id="msgNum" class="ii">4</span></a></li>
+                    <a th:href="@{'answerme?id='+${session.USER.id}}">回复我的<span style="margin-right: 200px;margin-top: 183px;" id="msgNum" class="ii">4</span></a></li>
                     <li class="index_recd_item"><img style="width:15px;height:12px" src="img/atme.jpg">&nbsp;&nbsp;<a href="mypost">我的帖子</a></li>
                 </ul>
             </div>

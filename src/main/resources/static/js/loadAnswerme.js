@@ -1,14 +1,14 @@
     var num = 1;
-    var x = 0;
     $(document).ready(function(){//初始化	加载
-    	loadPage(1);
+    	ajaxLoadComment(num);
     });
     function ajaxLoadComment(num) {
+    	var id = $("#uid").val();
     	$.ajax({
 			type: "GET",
-			url: "/getAllComment",
+			url: "/getReplyComment",
 			contentType: "application/json;cherset=utf-8",
-			data: {"page": num},
+			data: {"page": num, "id": id},
 		    dataType: "json",
 		    success: function (data){
 		    	var list = data.list;
@@ -19,20 +19,17 @@
 		    			"<img alt='头像' src='img/head3.jpg'></i>" +
 		    		"<div class='comment-main'>" +
 		    			"<header class='comment-header'>" +
-		    			  "<div class='comment-meta'><input id='cid' type='hidden' value='"+list[i].comment_id+"' />" +
+		    			  "<div class='comment-meta'>" +
 		    			    "<a class='comment-author' href='#'>"+list[i].commenter+"</a>" +
 		    			    "<time class='f-r'>"+list[i].comment_time+"</time>" +
-		               "<i onclick='loadReply("+x+", "+list[i].comment_id+")' style='float: right;margin-right: 20px;' class='Hui-iconfont' title='回复'>" +
-		                "&#xe622;回复（"+list[i].comment_note+"）</i>" +
 		    			  "</div>" +
 		    			"</header>" +
 		    				"<div class='comment-body'>"+list[i].comment_content+
-		    			"<ul class='commentList"+x+"' style='display:none'></ul><button id='reply' class='hf f-r btn btn-default size-S mt-10'>回复" +"</button>" +
+		    			"<a href='mydetail?post_id="+list[i].post_id+"' class='hf f-r btn btn-default size-S mt-10'>查看详情" +"</a>" +
 		    				"</div>" +
 		    			"</div>" +
 		    			"</li>";
 		    $("#showComment").append(body);
-		    x++;
 		      }
 		},
 		    error: function() {//失败的回调函数

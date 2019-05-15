@@ -14,14 +14,14 @@
 <link rel="stylesheet" type="text/css" href="plugin/wangEditor/css/wangEditor.min.css">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
 <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="js/loadAnswerme.js"></script>
 </head>
 <body>
-<input id="userId" type="hidden" th:if="${session.USER != null}" th:value="${session.USER.id}">
-<input id="pid" type="hidden" th:if="${PID != null}" th:value="${PID}">
+<input id="uid" type="hidden" th:if="${ID != null}" th:value="${ID}">
 <!--导航条-->
 <nav class="breadcrumb">
   <div class="container"> <i class="Hui-iconfont">&#xe67f;</i> <a href="talk" class="c-primary">首页</a> <span class="c-gray en">&gt;</span>  
-  <span class="c-gray">回复</span> <span class="c-gray en">&gt;</span>  
+  <span class="c-gray">回复我的</span>
   <span id="title" class="c-gray"></span></div>
 </nav>
 <section class="container pt-20">	
@@ -29,7 +29,7 @@
 				<div class="col-lg-9 col-md-9 w_main_left">
 					<div class="panel panel-default  mb-20">
 				<div class="tab-category">
-                    <strong>评论区</strong>
+                    <strong>最新回复</strong>
                 </div>
 						<div class="panel-body">
 							        <div class="line"></div>
@@ -77,17 +77,6 @@
 				</ul>
 			</div>
 		</div>
-						
-					<!--图片-->
-		<div class="bg-fff box-shadow radius mb-20">
-			<div class="tab-category">
-				<a href=""><strong>扫我关注</strong></a>
-			</div>
-			<div class="tab-category-item">
-				<img data-original="temp/gg.jpg" class="img-responsive lazyload" alt="响应式图片">
-			</div>
-		</div>
-					
 				</div>
 			</div>
 	
@@ -103,40 +92,5 @@
 <script type="text/javascript" src="plugin/pifu/pifu.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script> $(function(){ $(window).on("scroll",backToTopFun); backToTopFun(); }); </script>
-<script type="text/javascript" src="plugin/wangEditor/js/wangEditor.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-    		$("img.lazyload").lazyload({failurelimit : 3});
-    	
-        wangEditor.config.printLog = false;
-        var editor1 = new wangEditor('textarea1');
-        editor1.config.menus = ['insertcode', 'quote', 'bold', '|', 'img', 'emotion', '|', 'undo', 'fullscreen'];
-        editor1.config.emotions = { 'default': { title: '表情', data: 'plugin/wangEditor/emotions1.data'}, 'default2': { title: '心情', data: 'plugin/wangEditor/emotions3.data'}, 'default3': { title: '顶一顶', data: 'plugin/wangEditor/emotions2.data'}};
-        editor1.create();
-
-        //show reply
-        $(".hf").click(function () {
-            pId = $(this).attr("name");
-            $(this).parents(".commentList").find(".cancelReply").trigger("click");
-            $(this).parent(".comment-body").append($(".comment").clone(true));
-            $(this).parent(".comment-body").find(".comment").removeClass("hidden");
-            $(this).hide();
-        });
-        //cancel reply
-        $(".cancelReply").on('click',function () {
-            $(this).parents(".comment-body").find(".hf").show();
-            $(this).parents(".comment-body").find(".comment").remove();
-        });
-    });
-    $(function() {
-        $('#showComment').on('click', '#reply', function() {//动态添加元素的click事件
-        pId = $(this).attr("name");
-        $(this).parents(".commentList").find(".cancelReply").trigger("click");
-        $(this).parent(".comment-body").append($(".comment").clone(true));
-        $(this).parent(".comment-body").find(".comment").removeClass("hidden");
-        $(this).hide();
-        });
-    });
-</script>
 </body>
 </html>

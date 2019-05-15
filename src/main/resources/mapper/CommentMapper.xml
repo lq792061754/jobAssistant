@@ -27,7 +27,7 @@
     UPDATE comment SET comment_note = comment_note + 1 WHERE comment_id = #{comment_id}
   </update>
   <select id="getReplyComment" parameterType="Integer" resultMap="BaseCommentVo">
-    SELECT c.comment_id, c.commenter_id, c.comment_content, u.username, 
+    SELECT c.post_id, c.comment_id, c.comment_content, u.username, 
     DATE_FORMAT(c.comment_time, '%Y-%m-%d %H:%i:%S') comment_time, c.comment_note
     FROM
     comment c INNER JOIN user u ON c.commenter_id = u.id 
@@ -41,4 +41,8 @@
     LEFT JOIN job_post j ON c.post_id = j.post_id
     WHERE j.writer_id = #{writer_id} and c.comment_flag=1
   </select>
+  <update id="updateSetComLooked" parameterType="Integer">
+    UPDATE comment c INNER JOIN job_post j ON c.post_id = j.post_id SET c.comment_flag = 0
+    WHERE j.writer_id = #{writer_id}
+  </update>
 </mapper>

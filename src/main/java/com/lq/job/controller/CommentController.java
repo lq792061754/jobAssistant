@@ -56,6 +56,7 @@ public class CommentController {
     @RequestMapping(value="getReplyComment")
     @ResponseBody
     public PageInfo<CommentVo> getReplyCom(@RequestParam(defaultValue="1")Integer page, Integer id) {
+        commentService.updateSetComLooked(id);
         PageHelper.startPage(page, 5);//分页
         PageInfo<CommentVo> list = new PageInfo<>(commentService.getReplyComment(id));
         return list;
