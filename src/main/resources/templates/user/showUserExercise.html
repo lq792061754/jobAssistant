@@ -17,7 +17,7 @@
       <div class="tel">
       <a style="color: currentColor;" th:if="${session.USER != null}" 
      th:text="'用户：'+${session.USER.userName}" href="userlogin.html"></a>
-     <img style="margin-left: 10px;float: right;margin-top: 10px" alt="注销" 
+     <img style="margin-left: 10px;float: right;margin-top: 12px" alt="注销" 
      th:if="${session.USER != null}" src="images/out.jpg" onclick="loginOut()">
       <a style="color: currentColor;" th:if="${session.USER == null}" href="userlogin.html">登录/注册</a>
       </div> 
@@ -63,7 +63,7 @@
 <div id="container">
     <div class="tag">
         <ul><label style="font-size: 15px;font-weight:800">职业类别：</label>
-            <li><a href="###">经济学</a></li>
+            <li><a href="###">C</a></li>
             <li><a href="###">法学</a></li>
             <li><a href="###">教育学</a></li>
             <li><a href="###">C++</a></li>
@@ -74,9 +74,8 @@
             <li><a href="###">人工智能</a></li>
             <li><a href="###">医学</a></li>
             <li><a href="###">管理学</a></li>
-            <li><a href="###">哲学</a></li>
-            <li><a href="###">土木类</a></li>
-            <li><a href="###">水利类</a></li>
+            <li><a href="###">土木工程</a></li>
+            <li><a href="###">电气工程</a></li>
             <li><a href="###">其他</a></li>
         </ul>
     </div>
@@ -90,7 +89,7 @@
                 <li>华为</li>
                 <li>小米</li>
                 <li>360</li>
-                <li style="margin-left: 425px;"><input type="text" placeholder="请输入关键字"/><button type="submit">查询</button></li>         
+                <li style="margin-left: 425px;"><input type="text" placeholder="请输入题目关键字"/><button type="submit">查询</button></li>         
             </ul>
             <table>
                 <thead>
@@ -100,7 +99,7 @@
                     <th>热度</th>
                     <th>题目编号</th>
                     <th>类别</th>
-                    <th>题目来源</th>                   
+                    <th>题目来源</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -214,12 +213,12 @@
        </dd> 
       </dl>
       <div class="clear"></div> 
-     </div> 
-    </div> 
-   </div>  
+     </div>
+    </div>
+   </div>
    <div class="bottom"> 
     <div class="bottom_con">
-     @2013 版权所有 深圳网络科技有限公司 地址：深圳市罗湖区春风路桂都大厦 电话：0755-234235432 
+     @2019 版权所有 华北水利水电大学 地址：河南省郑州市金水区  电话：0755-234235432 
     </div> 
    </div> 
   </footer>

@@ -1,7 +1,8 @@
     var num = 1;
     var x = 0;
     $(document).ready(function(){//初始化	加载
-    	loadPage(1);
+    	num = 1;
+    	loadPage(num);
     	loadComNum();
     });
 	function loadPage(num) {

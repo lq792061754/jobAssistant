@@ -15,4 +15,6 @@ public interface JPostService {
     public Integer addComHeat(Integer id);
     public List<JPost> getAllJPostById(Integer id);
     public List<JPostVo> getAllJPostByCom();
+    public Integer setJPostToTop(Integer id);
+    public Integer deleteJPostById(Integer id);
 }

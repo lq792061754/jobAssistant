@@ -3,7 +3,6 @@ function submitReply() {
 	Reply["replier_id"] = $("#userId").val();
 	Reply["comment_id"] = $("#cid").val();
 	Reply["reply_content"] = $("#replyContent").val();
-	if (Reply["replier_id"] != null) {
 	$.ajax({
 		type: "POST",
 		url: "/insertReply",
@@ -23,7 +22,4 @@ function submitReply() {
 		}
 		
 	})
-  } else {
-	  alert("请先登录！");
-  }
 }

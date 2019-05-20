@@ -57,5 +57,15 @@ public class JPostServiceImpl implements JPostService {
         // TODO Auto-generated method stub
         return jPostMapper.getAllJPostByCom();
     }
+    @Override
+    public Integer setJPostToTop(Integer id) {
+        // TODO Auto-generated method stub
+        return jPostMapper.setJPostToTop(id);
+    }
+    @Override
+    public Integer deleteJPostById(Integer id) {
+        // TODO Auto-generated method stub
+        return jPostMapper.deleteJPostById(id);
+    }
 
 }

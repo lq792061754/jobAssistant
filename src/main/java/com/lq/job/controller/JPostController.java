@@ -47,18 +47,28 @@ public class JPostController {
     @RequestMapping(value="showJPost")
     @ResponseBody
     public PageInfo<JPostVo> showJPost(@RequestParam(defaultValue="1")Integer page) {
-        List<JPostVo> li = jPostService.getAllJPost();
         PageHelper.startPage(page, 5);//分页
+        List<JPostVo> li = jPostService.getAllJPost();
+        System.out.println(li);
         PageInfo<JPostVo> list = new PageInfo<>(li);
         if (page > list.getPageNum())
             li.clear();
         return list;
     }
+    @RequestMapping(value="showJPostManage")
+    @ResponseBody
+    public PageInfo<JPostVo> showJPostManage(@RequestParam(defaultValue="1")Integer page) {
+        PageHelper.startPage(page, 5);//分页
+        List<JPostVo> li = jPostService.getAllJPost();
+        System.out.println(li);
+        PageInfo<JPostVo> list = new PageInfo<>(li);
+        return list;
+    }
     @RequestMapping(value="showJPostByCom")
     @ResponseBody
     public PageInfo<JPostVo> showJPostBycom(@RequestParam(defaultValue="1")Integer page) {
-        List<JPostVo> li = jPostService.getAllJPostByCom();
         PageHelper.startPage(page, 5);//分页
+        List<JPostVo> li = jPostService.getAllJPostByCom();
         PageInfo<JPostVo> list = new PageInfo<>(li);
         if (page > list.getPageNum())
             li.clear();
@@ -67,8 +77,8 @@ public class JPostController {
     @RequestMapping(value="showMyJPost")
     @ResponseBody
     public PageInfo<JPost> showMyJPost(@RequestParam(defaultValue="1")Integer page, Integer id) {
-        List<JPost> li = jPostService.getAllJPostById(id);
         PageHelper.startPage(page, 5);//分页
+        List<JPost> li = jPostService.getAllJPostById(id);
         PageInfo<JPost> list = new PageInfo<>(li);
         if (page > list.getPageNum())
             li.clear();
@@ -85,6 +95,30 @@ public class JPostController {
             map.put("JPostVo", j);
             map.put("PRE", pre);
             map.put("NEXT", next);
+        return map;
+    }
+    @RequestMapping(value="setJPostToTop")
+    @ResponseBody
+    public Map<String, Object> setJPostToTop(Integer id) {
+        int i = jPostService.setJPostToTop(id);
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (i > 0) {
+            map.put("result", "success");
+            } else {
+                map.put("result", "failed");
+            }
+        return map;
+    }
+    @RequestMapping(value="deleteJPostById")
+    @ResponseBody
+    public Map<String, Object> deleteJPostById(Integer id) {
+        int i = jPostService.deleteJPostById(id);
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (i > 0) {
+            map.put("result", "success");
+            } else {
+                map.put("result", "failed");
+            }
         return map;
     }
 }

@@ -9,7 +9,7 @@
     window.onload=function(){
     if ($("#name").val() == "success")
     alert("添加成功");
-    else
+    if ($("#name").val() == "failed")
     	alert("添加失败");
     };
     //验证用户名和密码是否为空
@@ -30,7 +30,7 @@
     <div id="pageAll">
         <div class="page ">
             <!-- 添加试题页面样式 -->
-            <div class="banneradd bor">
+            <div class="banneradd bor" style="border: 0;">
                 <div class="baTopNo">
                     <span>试题添加</span>
                     <input type="hidden" th:value="${RESULT}" id="name"/>
@@ -50,8 +50,8 @@
                         &nbsp;&nbsp;&nbsp;试题种类：
                     <select name="et_kind" class="input3" style="width:236px">
                     <option>----请选择----</option>
-                    <option value="经济学">经济学</option>
-                    <option value="">法学</option>
+                    <option value="C">C</option>
+                    <option value="法学">法学</option>
                     <option value="法学">教育学</option>
                     <option value="C++">C++</option>
                     <option value="大数据">大数据</option>
@@ -61,8 +61,8 @@
                     <option value="医学">医学</option>
                     <option value="管理学">管理学</option>
                     <option value="人工智能">人工智能</option>
-                    <option value="土木类">土木类</option>
-                    <option value="水利类">水利类</option>
+                    <option value="土木工程">土木工程</option>
+                    <option value="电气工程">电气工程</option>
                     <option value="其他">其他</option>
                     </select>
                     </div>

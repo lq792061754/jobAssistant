@@ -45,6 +45,10 @@ public class ViewIndexController {
     public String showExeTopicIndex() {
         return "admin/showExeTopic";
     }
+    @RequestMapping(value="showJpostManageIndex")
+    public String showJpostManageIndex() {
+        return "admin/JPostManage";
+    }
     //后台显示试题内容初始化
     @RequestMapping(value="showExerciseIndex")
     public String showExerciseIndex(Model model, Integer et_id) {

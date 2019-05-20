@@ -49,4 +49,10 @@
     FROM job_post j INNER JOIN USER u ON j.writer_id = u.id 
     LEFT JOIN COMMENT c ON j.post_id = c.post_id ORDER BY c.commenter_id DESC
   </select>
+  <update id="setJPostToTop" parameterType="Integer">
+    UPDATE job_post SET post_id=((SELECT MAX(post_id) FROM (SELECT * FROM job_post)AS X)+1) WHERE post_id=#{post_id}
+  </update>
+  <delete id="deleteJPostById" parameterType="Integer">
+    DELETE FROM job_post WHERE post_id=#{post_id}
+  </delete>
 </mapper>
