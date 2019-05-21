@@ -5,7 +5,9 @@
   <title>校园招聘</title> 
   <link rel="stylesheet" type="text/css" href="css/basic.css" /> 
   <link rel="stylesheet" type="text/css" href="css/inner.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/userOut.js"></script>
+  <script type="text/javascript" src="js/loadCompany.js"></script>
  </head> 
  <body> 
   <header> 
@@ -63,66 +65,10 @@
        </tbody>
       </table> 
      </div> 
-     <div class="service_project_dl"> 
-      <dl class="service_project_dl01 fl"> 
-       <dt>
-        <a href="/WebDesign/"><img src="images/images/service_project01.png" alt="网站建设" /></a>
-       </dt> 
-       <dd class="service_project_name">
-        网站建设一条龙服务
-       </dd> 
-       <dd class="service_project_int">
-        策划、设计、制作、推广
-       </dd> 
-       <dd class="service_project_word">
-        从市场的角度和客户的需求出发，融合视觉美学 及有效策略，提升企业与产品的内在品质。
-       </dd> 
-      </dl> 
-      <dl class="service_project_dl01 fl"> 
-       <dt>
-        <img src="images/images/service_project02.png" alt="SEO" />
-       </dt> 
-       <dd class="service_project_name">
-        网站优化（SEO）
-       </dd> 
-       <dd class="service_project_int">
-        让更多人知道你的网站
-       </dd> 
-       <dd class="service_project_word">
-        从市场的角度和客户的需求出发，融合视觉美学 及有效策略，提升企业与产品的内在品质。
-       </dd> 
-      </dl> 
-      <dl class="service_project_dl01 fl"> 
-       <dt>
-        <img src="images/images/service_project03.png" alt="主机、域名、邮箱" />
-       </dt> 
-       <dd class="service_project_name">
-        主机、域名、邮箱
-       </dd> 
-       <dd class="service_project_int">
-        稳定、高速、全能
-       </dd> 
-       <dd class="service_project_word">
-        从市场的角度和客户的需求出发，融合视觉美学 及有效策略，提升企业与产品的内在品质。
-       </dd> 
-      </dl> 
-      <dl class="service_project_dl01 fl" style="margin-right:0;"> 
-       <dt>
-        <img src="images/images/service_project04.png" alt="网站改版、网站维护" />
-       </dt> 
-       <dd class="service_project_name">
-        网站改版、网站维护
-       </dd> 
-       <dd class="service_project_int">
-        打造安全、优质网站
-       </dd> 
-       <dd class="service_project_word">
-        从市场的角度和客户的需求出发，融合视觉美学 及有效策略，提升企业与产品的内在品质。
-       </dd> 
-      </dl> 
-      <div class="clear"></div> 
-     </div> 
-    </div>
+     <div id="hhh" class="service_project_dl">
+     </div>
+     <div class="clear"></div>
+     </div>
     <div class="service_cooperation"> 
      <div class="service_cooperation_con"> 
       <div class="general_title"> 
@@ -246,7 +192,7 @@
       <div class="clear"></div> 
      </div> 
     </div> 
-   </div>  
+   </div>
    <div class="bottom"> 
     <div class="bottom_con">
      @2019 版权所有 华北水利水电大学 地址：河南省郑州市金水区  电话：0755-234235432

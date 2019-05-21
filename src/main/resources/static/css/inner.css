@@ -329,7 +329,7 @@
 	margin-bottom:20px;
 }
 .service_project_dl dl{
-	width:206px;
+	width:15%;
 	height:230px;
 	background:#f6f6f6;
 	padding:35px 30px 25px 30px;
@@ -342,14 +342,16 @@
 	font-size:20px;
 	margin-top:15px;
 	font-weight:bold;
+	text-align: center;
 }
 .service_project_int{
 	color:#666;
-	margin:5px 0 10px 0;
+	margin:15px 0 10px 0;
 }
 .service_project_word{
 	color:#999;
 	line-height:20px;
+	height:40px;
 }
 .service_scope_sub,.service_cooperation{
 	width:100%;

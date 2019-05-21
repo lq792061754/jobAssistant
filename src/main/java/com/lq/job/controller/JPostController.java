@@ -49,7 +49,6 @@ public class JPostController {
     public PageInfo<JPostVo> showJPost(@RequestParam(defaultValue="1")Integer page) {
         PageHelper.startPage(page, 5);//分页
         List<JPostVo> li = jPostService.getAllJPost();
-        System.out.println(li);
         PageInfo<JPostVo> list = new PageInfo<>(li);
         if (page > list.getPageNum())
             li.clear();

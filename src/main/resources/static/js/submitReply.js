@@ -18,8 +18,7 @@ function submitReply() {
 				alert("回复失败");
 		},
 		error: function(){
-			alert("请求失败...");
+			window.location.href = "/userlogin.html?msg=3";
 		}
-		
 	})
 }

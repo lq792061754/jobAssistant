@@ -55,6 +55,14 @@ public class ViewIndexController {
         model.addAttribute("et_id", et_id);
         return "admin/showExercise";
     }
+    @RequestMapping(value="uploadCompanyIndex")
+    public String uploadCompanyIndex() {
+        return "admin/uploadCompany";
+    }
+    @RequestMapping(value="CompanyManageIndex")
+    public String companyManageIndex() {
+        return "admin/CompanyManage";
+    }
 //User
     @RequestMapping(value="/")
     public String indexPage() {

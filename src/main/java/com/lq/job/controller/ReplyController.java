@@ -28,7 +28,6 @@ public class ReplyController {
     @ResponseBody
     public Map<String, Object> insertReply(Reply reply) {
         Map<String, Object> map = new HashMap<String, Object>();
-        if (reply.getReplier_id() != null) {
             reply.setReply_time(sdf.format(new Date()));
             reply.setReply_note(null);
             int i = replyService.insertReply(reply);
@@ -37,9 +36,6 @@ public class ReplyController {
                 map.put("MSG", 1);//插入成功
             else
                 map.put("MSG", 0);//插入失败
-        } else {
-            map.put("MSG", 111);//对象为空
-        }
         return map;
     }
     @RequestMapping(value="getAllReply")

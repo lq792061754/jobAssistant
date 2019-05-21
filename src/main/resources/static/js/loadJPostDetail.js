@@ -24,7 +24,7 @@ $(document).ready(function(){//初始化	加载
         			alert("发布失败");
         	},
         	error : function(){
-        		alert("请求失败");
+        		window.location.href = "/userlogin.html?msg=3";
         	}
         });
     }

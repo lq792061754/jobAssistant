@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，唯一特性 -->
+<mapper namespace="com.lq.job.dao.CompanyMsgMapper">
+ <insert id="insertCompanyMsg" parameterType="CompanyMsg">
+  INSERT INTO company(company_name, start_time, end_time, test_time, need_brief, hold_place, post_url)
+  VALUES(#{company_name}, #{start_time}, #{end_time}, #{test_time}, #{need_brief}, #{hold_place}, #{post_url})
+ </insert>
+ <select id="getAllCompanyMsg" resultType="CompanyMsg">
+  SELECT * FROM company ORDER BY start_time DESC
+ </select>
+</mapper>

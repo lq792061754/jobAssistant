@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>添加企业信息</title>
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload=function(){
+    if ($("#name").val() == "success")
+    alert("添加成功");
+    if ($("#name").val() == "failed")
+    	alert("添加失败");
+    };
+    //验证用户名和密码是否为空
+    function upload() {
+    var uploadFormObj = document.getElementById("companyForm");
+    var isEmpty = true;
+        if(!($("#company_name").val())) {
+            alert("公司名不能为空！");
+            isEmpty = false;
+        }
+        if(!($("#hold_place").val())) {
+            alert("地点不能为空！");
+            isEmpty = false;
+        }
+        if($("#end_time").val() < $("#start_time").val()) {
+        	alert("结束时间不能小于开始时间！");
+            isEmpty = false;
+        }
+        if($("#test_time").val() < $("#end_time").val()) {
+            alert("笔试时间必须大于结束时间！");
+            isEmpty = false;
+        }
+        if($("#need_brief").val().length > 30) {
+            alert("内容长度过长！");
+            isEmpty = false;
+        }
+        if(isEmpty) {
+        	uploadFormObj.submit();
+        }
+    }
+</script>
+</head>
+<body>
+    <div id="pageAll">
+        <div class="page ">
+            <!-- 添加试题页面样式 -->
+            <div class="banneradd bor" style="border: 0;">
+                <div class="baTopNo">
+                    <span>企业信息添加</span>
+                    <input type="hidden" th:value="${RESULT}" id="name"/>
+                </div>
+                <div class="baBody">
+                   <form id="companyForm" action="insertCompanyMsg" method="post">
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;公司名称：<input id="company_name" type="text" class="input3" name="company_name"/>
+                    </div>
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;起始时间：<input id="start_time" type="date" class="input3" name="start_time"/>
+                    </div>
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;结束时间：<input id="end_time" type="date" class="input3" name="end_time"/>
+                    </div>
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;笔试时间：<input id="test_time" type="date" class="input3" name="test_time"/>
+                    </div>
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;宣讲地点：<input id="hold_place" type="text" class="input3" name="hold_place"/>
+                    </div>
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;企业网址：<input id="post_url" value="http://www.xxx.com" type="text" class="input3" name="post_url"/>
+                    </div>
+                    <div class="bbD">
+                        &nbsp;&nbsp;&nbsp;
+                        <label style="margin-left:-10px;">招聘简介：</label>
+                        <textarea placeholder="不超过30字" id="need_brief" name="need_brief" rows="5" cols="50" style="margin-left:-3px;"></textarea>
+                    </div>
+                    <div class="bbD">
+                        <p class="bbDP">
+                            <input type="button" class="btn_ok btn_yes" onclick="upload()" value="提交">
+                            <input type="reset" class="btn_ok btn_no" value="重置">
+                        </p>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
