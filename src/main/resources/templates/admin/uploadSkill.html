@@ -1,104 +1,49 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleleaf.org">
 <head>
-<title>帖子详情</title>
+<title>添加技巧</title>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="stylesheet" type="text/css" href="plugin/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="plugin/Hui-iconfont/1.0.8/iconfont.min.css" />
 <link rel="stylesheet" type="text/css" href="css/common.css" />
-<link rel="stylesheet" type="text/css" href="plugin/pifu/pifu.css" />
 <link rel="stylesheet" type="text/css" href="plugin/wangEditor/css/wangEditor.min.css">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
-<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-<script type="text/javascript" src="js/loadMyDetail.js"></script>
 </head>
 <body>
 <input id="userId" type="hidden" th:if="${session.USER != null}" th:value="${session.USER.id}">
 <input id="pid" type="hidden" th:if="${PID != null}" th:value="${PID}">
 <!--导航条-->
 <nav class="breadcrumb">
-  <div class="container"> <i class="Hui-iconfont">&#xe67f;</i> <a href="#" onclick="javascript:history.back(-1);" class="c-primary">返回</a> <span class="c-gray en">&gt;</span>  
-  <span class="c-gray">文章</span> <span class="c-gray en">&gt;</span>  
-  <span id="title" class="c-gray"></span></div>
+ <label style="font-size: 18px;margin-left: 40px;">添加面试技巧</label>
 </nav>
 <section class="container pt-20">	
 	<div class="row w_main_row">				
 				<div class="col-lg-9 col-md-9 w_main_left">
 					<div class="panel panel-default  mb-20">
-						<div id="content" class="panel-body pt-10 pb-10">	
-						</div>
-					</div>
-					<div class="panel panel-default  mb-20">
-						<div class="tab-category">
-                    <strong>评论区</strong>
-            </div>
 						<div class="panel-body">
+							        <!--用于评论-->
+							        <div class="mt-20" id="ct">
+                  <input id="skill_title" style="margin-bottom: 30px;width: 360px;height: 26px;"
+                     placeholder="标题" type="text" name="skill_title">
+							            <textarea id="textarea1" name="skill_content" style="height:200px;"> </textarea>
+							            <div class="text-r mt-10">
+							                <button onclick="submitSkill()" class="btn btn-primary radius" > 添加</button>
+							            </div>
+							        </div>
 							        <div class="line"></div>
-							        <ul id="showComment" class="commentList mt-50">
-							            <li id="error" style="font-size:15px"></li>
-							        </ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-3">
-					<!--热门推荐-->
-  	<div class="bg-fff box-shadow radius mb-20">
-			<div class="tab-category">
-				<a href=""><strong>热门推荐</strong></a>
-			</div>
-			<div class="tab-category-item">
-				<ul class="index_recd">
-					<li>
-						<a href="#">阻止a标签href默认跳转事件</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-					<li >
-						<a href="#">PHP面试题汇总</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-					<li >
-						<a href="#">阻止a标签href默认跳转事件</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-					<li >
-						<a href="#">阻止a标签href默认跳转事件</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-					<li >
-						<a href="#">PHP面试题汇总</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-				</ul>
-			</div>
-		</div>
-						
-					<!--图片-->
-		<div class="bg-fff box-shadow radius mb-20">
-			<div class="tab-category">
-				<a href=""><strong>扫我关注</strong></a>
-			</div>
-			<div class="tab-category-item">
-				<img data-original="temp/gg.png" class="img-responsive lazyload" alt="响应式图片">
-			</div>
-		</div>
-					
-				</div>
-			</div>
-	
+				
+			</div>	
 </section>
-<footer class="footer mt-20">
-		<p>Copyright &copy; 2019-2022 <br>
-            <a href="#" target="_blank">豫ICP备1705689号</a><br>
-        </p>
-</footer>
 <script type="text/javascript" src="plugin/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="plugin/layer/3.0/layer.js"></script>
 <script type="text/javascript" src="plugin/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="plugin/pifu/pifu.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script> $(function(){ $(window).on("scroll",backToTopFun); backToTopFun(); }); </script>
 <script type="text/javascript" src="plugin/wangEditor/js/wangEditor.min.js"></script>
@@ -135,6 +80,30 @@
         $(this).hide();
         });
     });
+    function submitSkill() {
+        var Skill = {};
+        Skill["skill_title"] = $("#skill_title").val();
+        Skill["skill_content"] = $("#textarea1").val();
+        $.ajax({
+            type: "POST",
+            url: "/insertSkill",
+            data: Skill,
+            dataType: "json",
+            success : function(data){
+                if (data.type == 1) {
+                alert("添加成功");
+                $("#skill_title").val("");
+                $("#textarea1").val("");
+                window.location.reload();
+                }   
+                else
+                    alert("添加失败");
+            },
+            error : function(){
+                alert("请求失败");
+            }
+        });
+    }
 </script>
 </body>
 </html>

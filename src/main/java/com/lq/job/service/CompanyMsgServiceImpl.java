@@ -21,5 +21,15 @@ public class CompanyMsgServiceImpl implements CompanyMsgService {
         // TODO Auto-generated method stub
         return companyMsgMapper.getAllCompanyMsg();
     }
+    @Override
+    public CompanyMsg getCompanyMsgById(Integer id) {
+        // TODO Auto-generated method stub
+        return companyMsgMapper.getCompanyMsgById(id);
+    }
+    @Override
+    public Integer updateCompanyMsgById(CompanyMsg company) {
+        // TODO Auto-generated method stub
+        return companyMsgMapper.updateCompanyMsgById(company);
+    }
 
 }

@@ -41,7 +41,7 @@ $(document).ready(function(){//初始化	加载
 		    		$("#error").append("还没有评论...");
 		    for (var i in list) {
 		    	var body = "<li class='item cl'> <i class='avatar size-L radius'>" +
-		    			"<img alt='头像' src='img/head3.jpg'></i>" +
+		    			"<img alt='头像' src='img/head2.jpg'></i>" +
 		    		"<div class='comment-main'>" +
 		    			"<header class='comment-header'>" +
 		    			  "<div class='comment-meta'><input id='cid' type='hidden' value='"+list[i].comment_id+"' />" +

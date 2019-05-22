@@ -50,7 +50,7 @@
 			<span th:if="${MESSAGE != null}" style="position: absolute;margin-top: -38px;margin-left: 170px;
                  color: forestgreen;font-size: 18px;">[[${MESSAGE}]]</span>
 			<form id="changeForm" action="/changePwd" method="post">
-				<div class="bbD">管理员用户名：&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${session.Admin.name}"></span></div>
+				<div class="bbD">管理员用户名：&nbsp;&nbsp;&nbsp;&nbsp;<span th:if="${session.Admin != null}" th:text="${session.Admin.name}"></span></div>
 				<div class="bbD">
 					&nbsp;&nbsp;&nbsp;&nbsp;输入旧密码：<input type="password" class="input3" id="pwd1" /><label id="p1Error" style="color:#F00;margin-left:150px"></label>
 				</div>

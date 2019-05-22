@@ -42,4 +42,9 @@ public class CompanyMsgController {
         PageInfo<CompanyMsg> list = new PageInfo<>(li);
         return list;
     }
+    @RequestMapping(value="modifyCompanyMsg")
+    public String modifyCompanyMsg(CompanyMsg company) {
+        companyMsgService.updateCompanyMsgById(company);
+        return "admin/CompanyManage";
+    }
 }

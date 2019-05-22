@@ -12,7 +12,7 @@
     SELECT id, username, password, email FROM user WHERE username = #{userName} AND password = #{password}
   </select>
   <select id="getAllUser" resultType="User">
-    SELECT * FROM user ORDER BY id DESC
+    SELECT id, username, password, email, DATE_FORMAT(createTime, '%Y-%m-%d %H:%i:%S') createTime FROM user ORDER BY id DESC
   </select>
   <delete id="deleteUserById" parameterType="Integer">
     DELETE FROM user WHERE id = #{id}

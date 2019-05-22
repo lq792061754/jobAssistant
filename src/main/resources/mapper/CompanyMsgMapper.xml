@@ -11,4 +11,11 @@
  <select id="getAllCompanyMsg" resultType="CompanyMsg">
   SELECT * FROM company ORDER BY start_time DESC
  </select>
+ <select id="getCompanyMsgById" resultType="CompanyMsg">
+  SELECT * FROM company WHERE company_id = #{company_id}
+ </select>
+ <update id="updateCompanyMsgById" parameterType="CompanyMsg">
+  UPDATE company SET start_time=#{start_time}, end_time=#{end_time}, test_time=#{test_time},
+  need_brief=#{need_brief}, hold_place=#{hold_place}, post_url=#{post_url} WHERE company_id = #{company_id}
+ </update>
 </mapper>

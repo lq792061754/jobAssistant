@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，唯一特性 -->
+<mapper namespace="com.lq.job.dao.SkillMapper">
+  <insert id="insertSkill" parameterType="Skill">
+    INSERT INTO skill(skill_title, skill_content, skill_time) 
+    VALUES(#{skill_title}, #{skill_content}, #{skill_time})
+  </insert>
+  <delete id="deleteSkillById" parameterType="Integer">
+    DELETE FROM skill WHERE skill_id=#{skill_id}
+  </delete>
+  <update id="updateSkillById" parameterType="Skill">
+    UPDATE skill set skill_content=#{skill_content} WHERE skill_id=#{skill_id}
+  </update>
+  <select id="getAllSkill" resultType="Skill">
+    SELECT skill_id, skill_title, skill_content, DATE_FORMAT(skill_time, '%Y-%m-%d') skill_time FROM skill ORDER BY skill_time DESC
+  </select>
+  <select id="getSkillById" parameterType="Integer" resultType="Skill">
+    SELECT skill_id, skill_title, skill_content, DATE_FORMAT(skill_time, '%Y-%m-%d') skill_time FROM skill
+    WHERE skill_id = #{skill_id}
+  </select>
+</mapper>

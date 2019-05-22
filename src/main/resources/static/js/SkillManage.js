@@ -1,11 +1,12 @@
-	$(document).ready(function(){//初始化	加载
+    var x = 1;
+$(document).ready(function(){//初始化	加载
 		var num = 1;
 		loadPage(num);//默认
 	});
 	function loadPage(num) {
      $.ajax({
          type: 'GET',
-         url: "/showCompanyMsg",
+         url: "/showSkill",
 		 data: {"page": num}, //传输的数据
          contentType: "application/json;cherset=utf-8",
          dataType: "json",
@@ -18,16 +19,17 @@
 					var rowTr = document.createElement('tr')
 			          //找到html的tr节点
 			           rowTr.className = "tr_node"
-			        var child = "<td>" + lts[i].company_id +  "</td>"+
-					"<td>" + lts[i].company_name +  "</td>"+
-					"<td>" + lts[i].start_time +  "~"+lts[i].end_time+"</td>"+
-					"<td>" + lts[i].test_time +  "</td>"+
-					"<td>" + lts[i].hold_place +  "</td>"+
-					"<td>" + lts[i].need_brief +  "</td>"+
-					"<td style='width:18%'><a href='modifyCompanyIndex?id="+lts[i].company_id+"'>修改</a>" +
-									"&nbsp;|&nbsp;<a href='#' onclick='del("+lts[i].company_id+")'>删除</a></td>";
+			        var child = "<td>" + lts[i].skill_id +  "</td>"+
+			        "<td>" + lts[i].skill_title +  "</td>"+
+			        "<td>" + lts[i].skill_time +  "</td>"+
+					"<td id='c"+x+"'>" + lts[i].skill_content +  "</td>"+
+					"<td style='width:18%'><a href='showSkilldetailIndex?sid="+lts[i].skill_id+"'>查看</a>" +
+			        "&nbsp;|&nbsp;<a href='#' onclick='del("+lts[i].skill_id+")'>删除</a></td>";
 					rowTr.innerHTML = child
 					$(".table_node").append(rowTr)//显示数据到页面
+					var str = $('#c'+x+'').text().substr(0,20) + '......';
+			        $('#c'+x+'').text(str);
+			        x++;
 				}
 				//存放页面数据
 				$(".msg").html("共<span id='pagesPage' style='font-size:15px; font-weight:bold'>"+

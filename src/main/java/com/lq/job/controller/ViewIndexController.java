@@ -1,11 +1,16 @@
 package com.lq.job.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lq.job.service.CompanyMsgService;
+
 @Controller
 public class ViewIndexController {
+    @Autowired
+    private CompanyMsgService companyMsgService;
 //Admin
     @RequestMapping(value="admin")
     public String startPage() {
@@ -63,6 +68,19 @@ public class ViewIndexController {
     public String companyManageIndex() {
         return "admin/CompanyManage";
     }
+    @RequestMapping(value="modifyCompanyIndex")
+    public String modifycompanyIndex(Integer id, Model model) {
+        model.addAttribute("MSG", companyMsgService.getCompanyMsgById(id));
+        return "admin/modifyCompany";
+    }
+    @RequestMapping(value="uploadSkillIndex")
+    public String uploadSkillIndex() {
+        return "admin/uploadSkill";
+    }
+    @RequestMapping(value="SkillManageIndex")
+    public String skillManageIndex() {
+        return "admin/SkillManage";
+    }
 //User
     @RequestMapping(value="/")
     public String indexPage() {
@@ -111,5 +129,10 @@ public class ViewIndexController {
     public String showAnswerme(Integer id, Model model) {
         model.addAttribute("ID", id);
         return "user/answerme";
+    }
+    @RequestMapping(value="showSkilldetailIndex")
+    public String showSkilldetail(Integer sid, Model model) {
+        model.addAttribute("ID", sid);
+        return "user/skilldetail";
     }
 }
