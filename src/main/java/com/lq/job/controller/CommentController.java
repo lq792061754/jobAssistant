@@ -35,7 +35,7 @@ public class CommentController {
             comment.setComment_note(0);
             comment.setComment_flag("1");
             int i = commentService.insertComment(comment);
-            jPostService.addComNum(comment.getPost_id());
+            jPostService.addComNum(comment.getPost_id());//评论数加一
             if (i > 0) {
                 map.put("type", 1);//插入成功
             } else {

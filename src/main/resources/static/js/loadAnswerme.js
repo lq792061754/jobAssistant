@@ -13,7 +13,7 @@
 		    success: function (data){
 		    	var list = data.list;
 		    	if (list == "")	
-		    		$("#error").append("还没有评论...");
+		    		$("#error").append("还没有回复...");
 		    for (var i in list) {
 		    	var body = "<li class='item cl'> <i class='avatar size-L radius'>" +
 		    			"<img alt='头像' src='img/head3.jpg'></i>" +

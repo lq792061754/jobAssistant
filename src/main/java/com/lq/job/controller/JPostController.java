@@ -59,7 +59,6 @@ public class JPostController {
     public PageInfo<JPostVo> showJPostManage(@RequestParam(defaultValue="1")Integer page) {
         PageHelper.startPage(page, 5);//分页
         List<JPostVo> li = jPostService.getAllJPost();
-        System.out.println(li);
         PageInfo<JPostVo> list = new PageInfo<>(li);
         return list;
     }
@@ -86,7 +85,7 @@ public class JPostController {
     @RequestMapping(value="showJPostDetail")
     @ResponseBody
     public Map<String, Object> showJPostDetail(Integer id) {
-        jPostService.addComHeat(id);
+        jPostService.addComHeat(id);//热度加一
         JPostVo j = jPostService.getJPostById(id);
         JPost pre = jPostService.getPreJPost(id);
         JPost next = jPostService.getNextJPost(id);
