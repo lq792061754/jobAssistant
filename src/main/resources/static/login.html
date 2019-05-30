@@ -20,8 +20,10 @@
 	window.onload=function(){
 	    if (getParam("ERROR") == 1)
 	    document.getElementById("ErrorMsg").innerHTML = "用户名或密码错误";
+	    else if (getParam("ERROR") == 2)
+	    document.getElementById("ErrorMsg").innerHTML = "请先登录";
 	    else
-	    	document.getElementById("ErroeMsg").innerHTML = "";
+	    document.getElementById("ErrorMsg").innerHTML = "";
 	};
 	function getParam(paramName) {//获取url参数值
 	    paramValue = "", isFound = !1;

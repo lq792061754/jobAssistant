@@ -20,7 +20,7 @@
   </insert>
   <select id="getAllJPost" resultMap="BaseResultMap">
     SELECT j.post_id, j.post_title, u.username, j.post_content, DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num,
-    j.post_note FROM job_post j INNER JOIN user u ON j.writer_id = u.id ORDER BY j.post_id DESC
+    j.post_note FROM job_post j INNER JOIN user u ON j.writer_id = u.id ORDER BY j.pub_time DESC
   </select>
   <select id="getJPostById" parameterType="Integer" resultMap="BaseResultMap">
     SELECT j.post_id, j.post_title, u.username, j.post_content, DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num,

@@ -46,6 +46,13 @@ function registerCheck() {
 		alert("用户名不能为空！")
 		flag = false
 	}
+	if($("#userName").val()) {
+     	var re=/^[a-zA-Z]+$/;
+     	if(!re.test($("#userName").val())){
+     		alert("用户名必须由英文组成！")
+     		flag = false
+     	}	
+     }
 	if (!$("#password").val()) {
 		alert("密码不能为空！")
 		flag = false

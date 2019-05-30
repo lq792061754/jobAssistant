@@ -35,7 +35,7 @@ public class ExerciseUploadController {
     public String uploadExe(@RequestParam("filename")MultipartFile file, ExerciseTopic et, Model model) throws Exception {
         et.setEt_heat(0);
         int rs = 0;
-        int t = ets.insertExetopic(et);
+        int t = ets.insertExetopic(et);//插入试题
         int et_id = et.getEt_id();
         String fileName = file.getOriginalFilename();
         try {

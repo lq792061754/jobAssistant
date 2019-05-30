@@ -6,11 +6,14 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.lq.job.intercepors.AdminLoginInterceptor;
 import com.lq.job.intercepors.LoginInterceptor;
 @Configuration
 public class WebConfigurer implements WebMvcConfigurer{
     @Autowired
     private LoginInterceptor loginInterceptor;
+    @Autowired
+    private AdminLoginInterceptor adminLoginInterceptor;
     // 这个方法是用来配置静态资源的，比如html，js，css，等等
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -20,6 +23,9 @@ public class WebConfigurer implements WebMvcConfigurer{
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor).addPathPatterns("/doExercise","/insertComment","/insertJPost","/insertReply");
+        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/changePwdIndex","/home","/top","/left",
+                "/right","/userManage","/uploadIndex","/showExeIndex","/showExerciseIndex","/uploadCompanyIndex",
+                "/CompanyManageIndex","/modifyCompanyIndex","/uploadSkillIndex", "/SkillManageIndex");
     }
 
 }
