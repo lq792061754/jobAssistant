@@ -15,15 +15,21 @@
 				$(".nextPage").show();//定义
 				var lts = data.list;
 				for(var i in lts){
+					var toTop = "<a href='#' onclick='toTop("+lts[i].post_id+")'>置顶</a>";
+					var status = "<td style='color:red;'>未置顶</td>";
+					if (lts[i].post_note == "1") {
+						status = "<td style='color:green;'>已置顶</td>";
+						toTop = "<a href='#' onclick='toNormal("+lts[i].post_id+")'>取消</a>";
+					}
 					var rowTr = document.createElement('tr')
 			          //找到html的tr节点
 			           rowTr.className = "tr_node"
 			        var child = "<td>" + lts[i].post_id +  "</td>"+
 					"<td>" + lts[i].post_title +  "</td>"+
 					"<td>" + lts[i].writer +  "</td>"+
-					"<td>" + lts[i].pub_time +  "</td>"+
+					"<td>" + lts[i].pub_time +  "</td>"+ status +
 					"<td style='width:18%'><a href='mydetail?post_id="+lts[i].post_id+"'>查看</a>" +
-							"&nbsp;|&nbsp;<a href='#' onclick='toTop("+lts[i].post_id+")'>置顶</a>" +
+							"&nbsp;|&nbsp;"+toTop +
 									"&nbsp;|&nbsp;<a href='#' onclick='del("+lts[i].post_id+")'>删除</a></td>";
 					rowTr.innerHTML = child
 					$(".table_node").append(rowTr)//显示数据到页面

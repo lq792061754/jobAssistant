@@ -17,4 +17,6 @@ public interface JPostMapper {
     public List<JPostVo> getAllJPostByCom();
     public Integer setJPostToTop(Integer id);
     public Integer deleteJPostById(Integer id);
+    public List<JPostVo> getAllJPostManage();
+    public Integer setJPostToNormal(Integer id);
 }

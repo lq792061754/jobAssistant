@@ -32,7 +32,7 @@ public class JPostController {
             jPost.setPub_time(sdf.format(new Date()));
             jPost.setPost_heat(0);
             jPost.setPost_comments_num(0);
-            jPost.setPost_note(null);
+            jPost.setPost_note("0");
             int i = jPostService.insertJPost(jPost);
             if (i > 0) {
                 map.put("type", 1);
@@ -58,7 +58,7 @@ public class JPostController {
     @ResponseBody
     public PageInfo<JPostVo> showJPostManage(@RequestParam(defaultValue="1")Integer page) {
         PageHelper.startPage(page, 5);//分页
-        List<JPostVo> li = jPostService.getAllJPost();
+        List<JPostVo> li = jPostService.getAllJPostManage();
         PageInfo<JPostVo> list = new PageInfo<>(li);
         return list;
     }
@@ -99,6 +99,18 @@ public class JPostController {
     @ResponseBody
     public Map<String, Object> setJPostToTop(Integer id) {
         int i = jPostService.setJPostToTop(id);
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (i > 0) {
+            map.put("result", "success");
+            } else {
+                map.put("result", "failed");
+            }
+        return map;
+    }
+    @RequestMapping(value="setJPostToNormal")
+    @ResponseBody
+    public Map<String, Object> setJPostToNormal(Integer id) {
+        int i = jPostService.setJPostToNormal(id);
         Map<String, Object> map = new HashMap<String, Object>();
         if (i > 0) {
             map.put("result", "success");

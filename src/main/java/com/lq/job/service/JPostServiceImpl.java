@@ -67,5 +67,15 @@ public class JPostServiceImpl implements JPostService {
         // TODO Auto-generated method stub
         return jPostMapper.deleteJPostById(id);
     }
+    @Override
+    public List<JPostVo> getAllJPostManage() {
+        // TODO Auto-generated method stub
+        return jPostMapper.getAllJPostManage();
+    }
+    @Override
+    public Integer setJPostToNormal(Integer id) {
+        // TODO Auto-generated method stub
+        return jPostMapper.setJPostToNormal(id);
+    }
 
 }
