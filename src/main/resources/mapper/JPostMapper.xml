@@ -24,6 +24,12 @@
     j.post_note FROM job_post j INNER JOIN user u ON j.writer_id = u.id
     WHERE j.post_note = 0 ORDER BY j.pub_time DESC
   </select>
+  <select id="getTopJPost" resultMap="BaseResultMap">
+    SELECT j.post_id, j.post_title, u.username, j.post_content, 
+    DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num,
+    j.post_note FROM job_post j INNER JOIN user u ON j.writer_id = u.id
+    WHERE j.post_note = 1 ORDER BY j.pub_time DESC
+  </select>
   <select id="getJPostById" parameterType="Integer" resultMap="BaseResultMap">
     SELECT j.post_id, j.post_title, u.username, j.post_content, DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num,
     j.post_note FROM job_post j INNER JOIN user u ON j.writer_id = u.id WHERE post_id = #{post_id}
@@ -49,7 +55,8 @@
     SELECT j.post_id, j.post_title, u.username, j.post_content, 
     DATE_FORMAT(j.pub_time, '%Y-%m-%d') pub_time, j.post_heat, j.post_comments_num, j.post_note 
     FROM job_post j INNER JOIN USER u ON j.writer_id = u.id 
-    LEFT JOIN COMMENT c ON j.post_id = c.post_id ORDER BY c.commenter_id DESC
+    LEFT JOIN COMMENT c ON j.post_id = c.post_id 
+    WHERE j.post_note = 0 ORDER BY c.commenter_id DESC
   </select>
   <update id="setJPostToTop" parameterType="Integer">
     UPDATE job_post SET post_note = 1 WHERE post_id=#{post_id}

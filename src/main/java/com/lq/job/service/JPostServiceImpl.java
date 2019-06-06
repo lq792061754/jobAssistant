@@ -77,5 +77,10 @@ public class JPostServiceImpl implements JPostService {
         // TODO Auto-generated method stub
         return jPostMapper.setJPostToNormal(id);
     }
+    @Override
+    public List<JPostVo> getTopJPost() {
+        // TODO Auto-generated method stub
+        return jPostMapper.getTopJPost();
+    }
 
 }

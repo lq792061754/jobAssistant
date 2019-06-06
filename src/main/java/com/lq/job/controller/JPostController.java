@@ -131,4 +131,10 @@ public class JPostController {
             }
         return map;
     }
+    @RequestMapping(value="showTopJPost")
+    @ResponseBody
+    public List<JPostVo> showTopJPost() {
+        List<JPostVo> list = jPostService.getTopJPost();
+        return list;
+    }
 }

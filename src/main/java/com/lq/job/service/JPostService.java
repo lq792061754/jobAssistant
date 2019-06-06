@@ -19,4 +19,5 @@ public interface JPostService {
     public Integer deleteJPostById(Integer id);
     public List<JPostVo> getAllJPostManage();
     public Integer setJPostToNormal(Integer id);
+    public List<JPostVo> getTopJPost();
 }
