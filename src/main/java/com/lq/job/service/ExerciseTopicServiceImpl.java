@@ -36,4 +36,16 @@ public class ExerciseTopicServiceImpl implements ExerciseTopicService {
         return etm.addHeat(id);
     }
 
+    @Override
+    public List<ExerciseTopic> showExeTopicByKind(String kind) {
+        // TODO Auto-generated method stub
+        return etm.showExeTopicByKind(kind);
+    }
+
+    @Override
+    public List<ExerciseTopic> showExeTopicByName(String name) {
+        // TODO Auto-generated method stub
+        return etm.showExeTopicByName(name);
+    }
+
 }

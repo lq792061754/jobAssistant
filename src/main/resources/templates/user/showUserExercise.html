@@ -63,33 +63,34 @@
 <div id="container">
     <div class="tag">
         <ul><label style="font-size: 15px;font-weight:800">职业类别：</label>
-            <li><a href="###">C</a></li>
-            <li><a href="###">法学</a></li>
-            <li><a href="###">教育学</a></li>
-            <li><a href="###">C++</a></li>
-            <li> <a href="###">大数据</a></li>
-            <li><a href="###">JAVA</a></li>
-            <li> <a href="###">SAP</a></li>
-            <li><a href="###">C#</a></li>
-            <li><a href="###">人工智能</a></li>
-            <li><a href="###">医学</a></li>
-            <li><a href="###">管理学</a></li>
-            <li><a href="###">土木工程</a></li>
-            <li><a href="###">电气工程</a></li>
-            <li><a href="###">其他</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('C')">C</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('法学')">法学</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('教育学')">教育学</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('C++')">C++</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('大数据')">大数据</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('JAVA')">JAVA</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('SAP')">SAP</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('C#')">C#</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('人工智能')">人工智能</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('医学')">医学</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('管理学')">管理学</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('土木工程')">土木工程</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('电气工程')">电气工程</a></li>
+            <li><a href="javascript:;" onclick="loadByKind('其他')">其他</a></li>
         </ul>
     </div>
     <div class="list ticket">
         <div class="new">
             <ul>
                 <li><strong>热门企业:</strong></li>
-                <li>百度</li>
-                <li>阿里巴巴</li>
-                <li>腾讯</li>
-                <li>华为</li>
-                <li>小米</li>
-                <li>360</li>
-                <li style="margin-left: 425px;"><input type="text" placeholder="请输入题目关键字"/><button type="submit">查询</button></li>         
+                <li><a href="javascript:;" onclick="loadByName('百度')">百度</a></li>
+                <li><a href="javascript:;" onclick="loadByName('阿里巴巴')">阿里巴巴</a></li>
+                <li><a href="javascript:;" onclick="loadByName('腾讯')">腾讯</a></li>
+                <li><a href="javascript:;" onclick="loadByName('华为')">华为</a></li>
+                <li><a href="javascript:;" onclick="loadByName('小米')">小米</a></li>
+                <li><a href="javascript:;" onclick="loadByName('网易')">网易</a></li>
+                <li style="margin-left: 425px;"><input id="key" type="text" placeholder="请输入题目关键字"/>
+                <button onclick="loadByKeyWord()">查询</button></li>
             </ul>
             <table>
                 <thead>

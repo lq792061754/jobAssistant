@@ -47,7 +47,7 @@
       <div class="tel">
      <input id="userId" type="hidden" th:if="${session.USER != null}" th:value="${session.USER.id}">
      <a style="color: currentColor;" th:if="${session.USER != null}" 
-     th:text="'用户：'+${session.USER.userName}" href="#"></a>
+     th:text="'用户：'+${session.USER.userName}" href="changeUserpwdIndex"></a>
      <img style="margin-bottom: 1px;margin-left:8px;" alt="注销" 
      th:if="${session.USER != null}" src="images/out.jpg" onclick="loginOut()">
       <a style="color: currentColor;" th:if="${session.USER == null}" href="userlogin.html">登录/注册</a>
@@ -105,7 +105,7 @@
 		<div class="mt-20 bg-fff box-shadow radius mb-5">
 			<div class="tab-category">
 				<a id="pub" href="talk"><strong class="current">最新发布</strong></a>
-				<a id="rep" href="#" onclick="newRep()" style="border-bottom: 1px;"><strong class="current">最新回复</strong></a>
+				<a id="rep" href="javascript:;" onclick="newRep()" style="border-bottom: 1px;"><strong class="current">最新回复</strong></a>
 			</div>
 		</div>
 		<div class="art_content">
@@ -177,40 +177,14 @@
                 </div>
             </div>
         </div>
-  	<!--热门推荐-->
-  	<div class="bg-fff box-shadow radius mb-20">
-			<div class="tab-category">
-				<a href=""><strong>热门推荐</strong></a>
-			</div>
-			<div class="tab-category-item">
-				<ul class="index_recd">
-					<li>
-						<a href="#">阻止a标签href默认跳转事件</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-					<li >
-						<a href="#">PHP面试题汇总</a>
-						<p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-					</li>
-				</ul>
-			</div>
-		</div>
-		
 		<!--点击排行-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
-                <a href=""><strong>热门排行</strong></a>
+                <a href=""><strong>热门排行TOP5</strong></a>
             </div>
             <div class="tab-category-item">
-                <ul class="index_recd clickTop">
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
+                <ul id="getHot" class="index_recd clickTop">
+                
                 </ul>
             </div>
         </div>
@@ -219,7 +193,7 @@
 			<div class="tab-category">
 				<a href=""><strong>友情链接</strong></a>
 			</div>
-			<div class="tab-category-item">
+			<div class="tab-category-item" style="height: 120px;">
 				<span><i class="Hui-iconfont">&#xe6f1;</i><a href="#" class="btn-link">百度</a></span>
 				<span><i class="Hui-iconfont">&#xe6f1;</i><a href="#" class="btn-link">淘宝</a></span>
 				<span><i class="Hui-iconfont">&#xe6f1;</i><a href="#" class="btn-link">腾讯</a></span>

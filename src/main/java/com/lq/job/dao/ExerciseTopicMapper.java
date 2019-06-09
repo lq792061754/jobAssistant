@@ -9,4 +9,6 @@ public interface ExerciseTopicMapper {
     public List<ExerciseTopic> showExeTopic();
     public int deleteExetopicById(Integer id);
     public Integer addHeat(Integer id);
+    public List<ExerciseTopic> showExeTopicByKind(String kind);
+    public List<ExerciseTopic> showExeTopicByName(String name);
 }

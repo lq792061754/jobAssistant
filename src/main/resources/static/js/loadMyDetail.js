@@ -112,7 +112,7 @@ $(document).ready(function(){//初始化	加载
    		    for (var j in li) {
    		    body += "<li class='item cl'>" +
    		    			"<a href='#'><i class='avatar size-L radius'>" +
-   		    			"<img src='img/head3.jpg'>" +
+   		    			"<img src='img/head4.jpg'>" +
    		    			"</i></a>" +
    		    	"<div class='comment-main'>" +
    		    		"<header class='comment-header'>" +

@@ -1,5 +1,6 @@
 package com.lq.job.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,20 @@ public class ExerciseManageController {
     @Autowired
     private ExerciseService es;
     //显示试题
+    @RequestMapping(value="showUserExeTopic")
+    @ResponseBody
+    public PageInfo<ExerciseTopic> showUserExeTopic(@RequestParam(defaultValue="1")Integer page, Integer flag, String content) {
+        List<ExerciseTopic> li = new ArrayList<ExerciseTopic>();
+        PageHelper.startPage(page, 5);//分页
+        if (flag == 0)
+         li = ets.showExeTopic();
+        if (flag == 1)
+            li = ets.showExeTopicByKind(content);
+        if (flag == 2)
+            li = ets.showExeTopicByName(content);
+        PageInfo<ExerciseTopic> list = new PageInfo<>(li);
+        return list;
+    }
     @RequestMapping(value="showExeTopic")
     @ResponseBody
     public PageInfo<ExerciseTopic> showExeTopic(@RequestParam(defaultValue="1")Integer page) {

@@ -1,4 +1,6 @@
-	$(document).ready(function(){//初始化	加载
+	var flag = 0;
+	var content = "";
+$(document).ready(function(){//初始化	加载
 		var num = 1;
 		loadPage(num);//默认
 	});
@@ -6,8 +8,8 @@
 	var id = $("#id").val();
      $.ajax({
          type: 'GET',
-         url: "/showExeTopic",
-		 data: {"page": num}, //传输的数据
+         url: "/showUserExeTopic",
+		 data: {"page": num, "flag": flag, "content": content}, //传输的数据
          contentType: "application/json;cherset=utf-8",
          dataType: "json",
          success: function (data){
@@ -65,4 +67,22 @@
 	}
 	function doExe(id) {
 		window.location.href='/doExercise?id='+id+'';
+	}
+	function loadByKind(kind) {
+		flag = 1;
+		content = kind;
+		num = 1;
+		loadPage(num);
+	}
+	function loadByName(name) {
+		flag = 2;
+		content = name;
+		num = 1;
+		loadPage(num);
+	}
+	function loadByKeyWord() {
+		flag = 2;
+		content = $("#key").val();
+		num = 1;
+		loadPage(num);
 	}

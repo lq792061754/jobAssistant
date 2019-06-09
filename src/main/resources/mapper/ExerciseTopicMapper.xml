@@ -9,7 +9,7 @@
    #{et_time}, #{et_from}, #{et_kind}, #{et_heat})
  </insert>
  <select id="showExeTopic" resultType="ExerciseTopic">
-  SELECT * FROM exercise_topic ORDER BY et_heat DESC
+  SELECT * FROM exercise_topic ORDER BY et_time DESC
  </select>
  <delete id="deleteExetopicById" parameterType="Integer">
   DELETE FROM exercise_topic WHERE et_id=#{et_id}
@@ -17,4 +17,10 @@
  <update id="addHeat" parameterType="Integer">
   UPDATE exercise_topic SET et_heat = et_heat + 1 WHERE et_id = #{et_id}
  </update>
+ <select id="showExeTopicByKind" parameterType="String" resultType="ExerciseTopic">
+  SELECT * FROM exercise_topic WHERE et_kind=#{et_kind} ORDER BY et_time DESC
+ </select>
+ <select id="showExeTopicByName" parameterType="String" resultType="ExerciseTopic">
+  SELECT * FROM exercise_topic WHERE et_name LIKE CONCAT(CONCAT('%', #{et_name}), '%') ORDER BY et_time DESC
+ </select>
 </mapper>

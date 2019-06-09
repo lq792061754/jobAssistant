@@ -137,4 +137,10 @@ public class JPostController {
         List<JPostVo> list = jPostService.getTopJPost();
         return list;
     }
+    @RequestMapping(value="showTopHot")
+    @ResponseBody
+    public List<JPost> showTopHot() {
+        List<JPost> list = jPostService.getTopHot();
+        return list;
+    }
 }

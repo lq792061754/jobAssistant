@@ -20,4 +20,5 @@ public interface JPostService {
     public List<JPostVo> getAllJPostManage();
     public Integer setJPostToNormal(Integer id);
     public List<JPostVo> getTopJPost();
+    public List<JPost> getTopHot();
 }

@@ -135,4 +135,8 @@ public class ViewIndexController {
         model.addAttribute("ID", sid);
         return "user/skilldetail";
     }
+    @RequestMapping(value="changeUserpwdIndex")
+    public String changeUserpwd() {
+        return "user/changeUserpwd";
+    }
 }
