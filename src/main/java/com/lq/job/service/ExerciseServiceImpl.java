@@ -37,4 +37,16 @@ public class ExerciseServiceImpl implements ExerciseService{
         return exeMapper.deleteAllByEt_id(id);
     }
 
+    @Override
+    public Exercise getOneExeById(Integer id) {
+        // TODO Auto-generated method stub
+        return exeMapper.getOneExeById(id);
+    }
+
+    @Override
+    public Integer updateExerciseById(Exercise exercise) {
+        // TODO Auto-generated method stub
+        return exeMapper.updateExerciseById(exercise);
+    }
+
 }

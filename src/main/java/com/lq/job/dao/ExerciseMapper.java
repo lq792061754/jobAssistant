@@ -10,4 +10,6 @@ public interface ExerciseMapper {
     public List<Exercisevo> showExercises(Integer id);
     public Integer deleteExeById(Integer id);
     public Integer deleteAllByEt_id(Integer id);
+    public Exercise getOneExeById(Integer id);
+    public Integer updateExerciseById(Exercise exercise);
 }

@@ -6,11 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lq.job.service.CompanyMsgService;
+import com.lq.job.service.ExerciseService;
 
 @Controller
 public class ViewIndexController {
     @Autowired
     private CompanyMsgService companyMsgService;
+    @Autowired
+    private ExerciseService exerciseService;
 //Admin
     @RequestMapping(value="admin")
     public String startPage() {
@@ -73,6 +76,11 @@ public class ViewIndexController {
         model.addAttribute("MSG", companyMsgService.getCompanyMsgById(id));
         return "admin/modifyCompany";
     }
+    @RequestMapping(value="modifyExerciseIndex")
+    public String modifyExercise(Integer eid, Model model) {
+        model.addAttribute("EXERCISE", exerciseService.getOneExeById(eid));
+        return "admin/modifyExercise";
+    }
     @RequestMapping(value="uploadSkillIndex")
     public String uploadSkillIndex() {
         return "admin/uploadSkill";
@@ -94,10 +102,6 @@ public class ViewIndexController {
     public String doExercise(Integer id, Model model) {
         model.addAttribute("ID", id);
         return "user/doExercise";
-    }
-    @RequestMapping(value="about")
-    public String aboutUs() {
-        return "user/about";
     }
     @RequestMapping(value="skill")
     public String showSkill() {

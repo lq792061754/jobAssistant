@@ -21,4 +21,11 @@
  <delete id="deleteAllByEt_id" parameterType="Integer">
   DELETE FROM write_exercise WHERE et_id = #{et_id}
  </delete>
+ <select id="getOneExeById" parameterType="Integer" resultType="Exercise">
+  SELECT * FROM write_exercise WHERE exercise_id = #{exercise_id}
+ </select>
+ <update id="updateExerciseById" parameterType="Exercise">
+  UPDATE write_exercise SET exercise_answer=#{exercise_answer}, choice1=#{choice1},
+  choice2=#{choice2}, choice3=#{choice3}, choice4=#{choice4} WHERE exercise_id = #{exercise_id}
+ </update>
 </mapper>

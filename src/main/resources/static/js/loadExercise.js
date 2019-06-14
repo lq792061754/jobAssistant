@@ -27,7 +27,8 @@
 					"<td>" + lts[i].choice3 +  "</td>"+
 					"<td>" + lts[i].choice4 +  "</td>"+*/
 					"<td>" + lts[i].et_name +  "</td>"+
-					"<td style='width:10%'><a href='#' onclick='showDetail()'>修改</a>|<a href='#' onclick='del("+lts[i].exercise_id+")'>删除</a></td>";
+					"<td style='width:10%'><a href='modifyExerciseIndex?eid="+lts[i].exercise_id+"'>修改</a>" +
+							"|<a href='javascript:;' onclick='del("+lts[i].exercise_id+")'>删除</a></td>";
 					rowTr.innerHTML = child
 					$(".table_node").append(rowTr)//显示数据到页面
 				}

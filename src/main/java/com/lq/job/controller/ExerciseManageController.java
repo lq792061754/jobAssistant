@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lq.job.domain.Exercise;
 import com.lq.job.domain.ExerciseTopic;
 import com.lq.job.domain.Exercisevo;
 import com.lq.job.service.ExerciseService;
@@ -109,5 +110,11 @@ public class ExerciseManageController {
             answerMap.put("answer"+i, s);
         }
         return answerMap;
+    }
+    @RequestMapping(value="updateExercise")
+    @ResponseBody
+    public String updateExercise(Exercise exercise) {
+        es.updateExerciseById(exercise);
+        return "修改成功";
     }
 }
